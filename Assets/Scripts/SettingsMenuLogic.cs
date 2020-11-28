@@ -36,6 +36,11 @@ public class SettingsMenuLogic : MonoBehaviour
     Text soundVolumeValueLabel;
 
     /// <summary>
+    /// TODO
+    /// </summary>
+    Toggle fullscreenToggle;
+
+    /// <summary>
     /// Кнопка сохранения изменений настроек.
     /// </summary>
     GameObject saveChangesButton;
@@ -54,7 +59,7 @@ public class SettingsMenuLogic : MonoBehaviour
         soundVolumeValueLabel = GameObject.Find("SoundVolumeValueLabel").GetComponent<Text>();
         saveChangesButton = GameObject.Find("SaveChangesButton");
 
-        LoadSettings(); // Получаем настройки предыдущей(если была) игровой сессии
+        LoadSettings();                     // Получаем настройки предыдущей(если была) игровой сессии
         saveChangesButton.SetActive(false); // Изначально нет никаких изменений настроек, поэтому кнопка неактивна
     }
 
@@ -65,6 +70,7 @@ public class SettingsMenuLogic : MonoBehaviour
     {
         // Отображаем в метке значение, соответствующее положению бегунка musicVolumeSlider
         musicVolumeValueLabel.text = Convert.ToInt32(musicVolumeSlider.value).ToString();
+        // Отображаем кнопку сохранения изменений.
         saveChangesButton.SetActive(true);
     }
 
@@ -75,7 +81,14 @@ public class SettingsMenuLogic : MonoBehaviour
     {
         // Отображаем в метке значение, соответствующее положению бегунка soundVolumeSlider
         soundVolumeValueLabel.text = Convert.ToInt32(soundVolumeSlider.value).ToString();
+        // Отображаем кнопку сохранения изменений.
         saveChangesButton.SetActive(true);
+    }
+
+    //TODO
+    public void OnFullscreenToogleChange()
+    {
+
     }
 
     /// <summary>
@@ -84,6 +97,7 @@ public class SettingsMenuLogic : MonoBehaviour
     public void OnSaveChangesButtonClick()
     {
         SaveSettings();
+        // Скрываем кнопку сохранения настроек.
         saveChangesButton.SetActive(false);
     }
 
