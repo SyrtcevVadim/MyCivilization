@@ -127,12 +127,4 @@ public class MenuPanelLogic : MonoBehaviour
     {
         Application.Quit();
     }
-    /// <summary>
-    /// 
-    /// </summary>
-    public void OnBackToMainMenuButtonClick()
-    {
-        // TODO когда появится главное меню
-    }
-    
 }

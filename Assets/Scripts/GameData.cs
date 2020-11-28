@@ -5,6 +5,11 @@ using UnityEngine.Tilemaps;
 public class GameData:MonoBehaviour 
 {
     /// <summary>
+    /// Генератор псевдо-случайных чисел.
+    /// </summary>
+    private static System.Random psevdoRandomNumberGenerator;
+
+    /// <summary>
     /// Счетчик номера текущего хода
     /// </summary>
     public static uint currentTurnCounter = 1;
@@ -62,11 +67,29 @@ public class GameData:MonoBehaviour
     /// Тайл для отображения ячеек, в которые юнит может пойти
     /// </summary>
     public static Tile tileForMovingIn;
-
-    public static string[] UnitPossibleNames = { "Chort", "Vova", "Martin", "Alex", "Vitya"};
     
+
+
+
+
+
+    /// <summary>
+    /// Список возможных имен для юнитов в игре.
+    /// </summary>
+    private static string[] possibleUnitNames = { "Vadim", "Katya", "Vova","Ksysha", "Sanya","Ilya","Yare-k","Chort"};
+    
+    /// <summary>
+    /// Генерирует случайное имя юнита-человека.
+    /// </summary>
+    /// <returns>Возвращает сгенерированное имя.</returns>
+    public static string GetRandomHumanName()
+    {
+        return possibleUnitNames[psevdoRandomNumberGenerator.Next(0, possibleUnitNames.Length)];
+    }
+
     private void Awake()
     {
+        psevdoRandomNumberGenerator = new System.Random();
         // Получаем все слои игрового поля
         baseLayer = GameObject.Find("BaseLayer").GetComponent<Tilemap>();           // Получаем слой ландшафта
         townLayer = GameObject.Find("TownLayer").GetComponent<Tilemap>();           // Получаем слой городов

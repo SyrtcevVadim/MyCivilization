@@ -5,8 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class PlayFieldLogic : MonoBehaviour
 {
-    static System.Random psevdoRandomNumberGenerator = new System.Random();
-   
     /// <summary>
     /// Список городов государства игрока
     /// </summary>
@@ -14,61 +12,69 @@ public class PlayFieldLogic : MonoBehaviour
     /// <summary>
     /// Список юнитов годударства игрока
     /// </summary>
-    public static List<Human> listOfUnits;
+    public static List<Human> listOfPlayerUnits;
     /// <summary>
     /// Список вражеских юнитов 
     /// </summary>
-    public static List<Human> listOfEnemies;
-
+    public static List<Human> listOfEnemyUnits;
+    /// <summary>
+    /// Список городов противника.
+    /// </summary>
+    public static List<Human> listOfEnemyCities;
     
     /// <summary>
-    /// Юнит, выбранный для совершения дейтсвия на игровом поле.
+    /// Выбранный игроком юнит.
     /// </summary>
     public static Human selectedUnit;
     /// <summary>
-    /// Город, выбранный пользователем нажатием ЛКМ
+    /// Выбранный игроком город.
     /// </summary>
     public static City selectedCity;
 
+    /// <summary>
+    /// Создает город игрока на карте.
+    /// </summary>
+    /// <param name="coordinates">Координаты города.</param>
+    /// <param name="name">Имя города.</param>
+    /// <param name="isCapital">Флаг столицы.</param>
+    private static void CreateCity(string name, Vector3Int coordinates, bool isCapital=false)
+    {
+        City newCity = new City(name, coordinates, isCapital);      // Создаем город
+        listOfPlayerCities.Add(newCity);                            // Добавляем его в список городов
+        GameData.townLayer.SetTile(coordinates, newCity.cityTile);  // Отображаем данный город на карте
+        newCity.SetTerritory();                                     // Просчитываем территорию города
+        newCity.ShowTerritory();                                    // Отображаем территорию города
+    }
+
+    /// <summary>
+    /// Создает юнит игрока на карте.
+    /// </summary>
+    /// <param name="coordinates">Координаты юнита.</param>
+    public static void CreateUnit(Vector3Int coordinates)
+    {
+        Human newHuman = new Human(coordinates);                    // Создаем юнит
+        listOfPlayerUnits.Add(newHuman);                            // Добавляем его в список юнитов игрока
+        GameData.unitLayer.SetTile(coordinates, newHuman.unitTile); // Отрисовываем юнит на карте
+    }
+
+    private void Awake()
+    {
+        listOfPlayerCities = new List<City>();  // Выделяем память для хранения списка городов
+        listOfPlayerUnits = new List<Human>();        // Выделяем память для хранения списка дружественных юнитов
+        listOfEnemyUnits = new List<Human>();      // Выделяем память для хранения списка вражескию юнитов
+    }
     private void Start()
     {
-        listOfPlayerCities = new List<City>();        // Выделяем память для хранения списка городов
-        listOfUnits = new List<Human>();        // Выделяем память для хранения списка дружественных юнитов
-        listOfEnemies = new List<Human>();      // Выделяем память для хранения списка вражескию юнитов
-
         // Создаем город-столицу
-        City capitalCity = new City("Moscow", new Vector3Int(1, 2, 0), GameData.capitalCityTile, true);
-        listOfPlayerCities.Add(capitalCity);
-
+        CreateCity("Moscow", new Vector3Int(1, 2, 0), true);
         // Создадим еще два города-провинции
-        City firstProvincialCity = new City("Orel", new Vector3Int(-2, 2, 0), GameData.provincialCityTile);
-        listOfPlayerCities.Add(firstProvincialCity);
-        City secondProvincialCity = new City("Kursk", new Vector3Int(-1, -3, 0), GameData.provincialCityTile);
-        listOfPlayerCities.Add(secondProvincialCity);
+        CreateCity("Orel", new Vector3Int(-2, 2, 0));
+        CreateCity("Kursk", new Vector3Int(-1, -3, 0));
 
         // Рядом с каждым городом поставим юнита-человека
-        Human firstUnit = new Human("Jacob", new Vector3Int(2, 2, 0), GameData.unitHumanTile);
-        Human secondUnit = new Human("Oliver", new Vector3Int(-3, 2, 0), GameData.unitHumanTile);
-        Human thirdUnit = new Human("VovaChort", new Vector3Int(0, -3, 0), GameData.unitHumanTile);
-        listOfUnits.Add(firstUnit);
-        listOfUnits.Add(secondUnit);
-        listOfUnits.Add(thirdUnit);
-        // Отрисовываем города и юнитов
-        foreach(City city in listOfPlayerCities)
-        {
-            Debug.Log($"Spawning town: {city.Name}");
-            GameData.townLayer.SetTile(city.Coordinates, city.cityTile);
-            city.SetTerritory();   // Просчитываем территорию каждого города'
-            city.ShowTerritory();
-        }
-
-        foreach(Human human in listOfUnits)
-        {
-            Debug.Log($"Spawning unit: {human.Name}");
-            GameData.unitLayer.SetTile(human.Coordinates, GameData.unitHumanTile);
-
-        }
-
+        CreateUnit(new Vector3Int(2, 2, 0));
+        CreateUnit(new Vector3Int(-3, 2, 0));
+        CreateUnit(new Vector3Int(0, -3, 0));
     }
 
     /// <summary>
@@ -142,25 +148,12 @@ public class PlayFieldLogic : MonoBehaviour
     }
 
     /// <summary>
-    /// Создает юнита-человека в тайле, соответствующем координатам.
-    /// </summary>
-    /// <param name="coordinates">Координаты места появления юнита.</param>
-    public static void CreateUnit(Vector3Int coordinates)
-    {
-        string unitName = GameData.UnitPossibleNames[psevdoRandomNumberGenerator.Next(0, GameData.UnitPossibleNames.Length)];
-        Human newHuman = new Human(unitName, coordinates, GameData.unitHumanTile);
-        listOfUnits.Add(newHuman);
-        GameData.unitLayer.SetTile(coordinates, GameData.unitHumanTile);
-    }
-    
-
-    /// <summary>
     /// Проверяем, кликнул ли пользователь по своему юниту. Если кликнул, обрабатываем нажатие.
     /// </summary>
     /// <param name="coordinates"></param>
     private void ProcessClickOnPlayerUnit(Vector3Int coordinates)
     {
-        foreach (Human human in listOfUnits)
+        foreach (Human human in listOfPlayerUnits)
         {
             // Если пользователь щелкнул ЛКМ по юниту, то он его выбирает. 
             if (human.Coordinates == coordinates)
@@ -210,7 +203,6 @@ public class PlayFieldLogic : MonoBehaviour
             // С помощью правой кнопки мыши юнитов можно будет передвигать
             if (Input.GetMouseButtonDown(1))
             {
-                Debug.Log("Try to move unit!");
                 Vector3 clickedWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector3Int destination = GameData.baseLayer.WorldToCell(clickedWorldPosition);
                 if (selectedUnit!= null && selectedUnit.IsMovingPossible(destination))

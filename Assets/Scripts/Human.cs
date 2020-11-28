@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class Human
 {
-    
 
     /// <summary>
     /// Очки действия юнита
@@ -48,7 +47,7 @@ public class Human
     /// <summary>
     /// Тайл, представляющий юнита на игровом поле.
     /// </summary>
-    private Tile unitTile;
+    public  Tile unitTile;
 
     // Характеристики юнита
     /// <summary>
@@ -78,18 +77,17 @@ public class Human
     /// <param name="name">Имя человека</param>
     /// <param name="coordinates">Координаты позиции, в которой человек находится</param>
     /// <param name="unitTile">Tile, которым представлен спрайт человека</param>
-    public Human(string name, Vector3Int coordinates, Tile unitTile)
+    public Human(Vector3Int coordinates)
     {
         possibleTileCoordinatesForMoving = new List<Vector3Int>();          // У каждого человека есть соседние клетки для перемещения
-        this.Name = name;                                                   // Устанавливаем имя человека
-        this.coordinates = coordinates;                                     // Позиционируем его на карте
-        this.unitTile = unitTile;                                           // Задаем ему отображение с помощью Tile
+        Name = GameData.GetRandomHumanName();                               // Получаем случайное имя для юнита-человека
+        Coordinates = coordinates;                                          // Позиционируем его на карте
+        unitTile = GameData.unitHumanTile;                                  
         actionPoints = 2;                                                   // У человека изначально 2 очка действия
         toughness = 100;                                                    // 100 очков жизней
         strength = 20;                                                      // 20 очков силы
         armor = 3;                                                          // и 3 очка защиты
         costInProductionPoints = 10;                                        // Юнит-человек стоит 10 единиц продукции
-        // Все эти данные будут отображаться в UnitInfoPanel
     }
 
     /// <summary>

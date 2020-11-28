@@ -89,7 +89,7 @@ public class CityInfoPanelLogic : MonoBehaviour
             notEnoughProductionForPurchase.SetActive(false);
             bool isEmpty = true;
             // не позволяем заказать новый юнит ,если на клетке города стоит какой-то юнит
-            foreach (Human unit in PlayFieldLogic.listOfUnits)
+            foreach (Human unit in PlayFieldLogic.listOfPlayerUnits)
             {
                 if (PlayFieldLogic.selectedCity.Coordinates == unit.Coordinates)
                 {

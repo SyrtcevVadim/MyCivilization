@@ -41,28 +41,30 @@ public class City
     /// <param name="coordinates">Координаты города в сетке</param>
     /// <param name="cityTile">Тайл, представляющий город на карте</param>
     /// <param name="isCapital">Является ли город городом-столицей</param>
-    public City(string name, Vector3Int coordinates, Tile cityTile, bool isCapital = false)
+    public City(string name, Vector3Int coordinates, bool isCapital = false)
     {
         // Если город является столицей, в нем увеличены все характеристики производства
         if (isCapital)
         {
-            productionGrowth = 2.3; // Прирост продукции
-            goldGrowth = 3;         // Прирост золота
-            scienceGrowth = 1;      // Прирост науки
-            populationCounter = 3;  // Текущее население города
-            maxPossibleProductionValue = 400;   // Объем складов для производимой продукции в городе.
+            productionGrowth = 2.3;                            // Прирост продукции
+            goldGrowth = 3;                                    // Прирост золота
+            scienceGrowth = 1;                                 // Прирост науки
+            populationCounter = 3;                             // Текущее население города
+            maxPossibleProductionValue = 400;                  // Объем складов для производимой продукции в городе.
+            this.cityTile = GameData.capitalCityTile;          // Устанавливаем тайл-столицы для города столицы
         }
         else
         {
-            productionGrowth = 1;               // Прирост продукции
-            goldGrowth = 1;                     // Прирост золота
-            scienceGrowth = 0;                  // Прирост науки
-            populationCounter = 1;              // Текущее население города
-            maxPossibleProductionValue = 100;   // Объем складов для производимой продукции в городе
+            productionGrowth = 1;                              // Прирост продукции
+            goldGrowth = 1;                                    // Прирост золота
+            scienceGrowth = 0;                                 // Прирост науки
+            populationCounter = 1;                             // Текущее население города
+            maxPossibleProductionValue = 100;                  // Объем складов для производимой продукции в городе
+            this.cityTile = GameData.provincialCityTile;       // Устанавливаем тайл-провинции для города-провинции
         }
         this.Name = name;               // Устанавливаем имя города
         this.coordinates = coordinates; // Сохраняем координаты города на карте
-        this.cityTile = cityTile;       // Сохраняем тайл, представляющий город на карте
+        
         this.isCapital = isCapital;     // Сохраняем информацию о том, является ли этот город столичным
         territory = new List<Vector3Int>();
     }

@@ -85,7 +85,7 @@ public class UILogic : MonoBehaviour
         UpdateTotalGoldGrowth(PlayFieldLogic.listOfPlayerCities);
 
         // После окончания хода у всех юнитов восстанавливаются очки действий(action points)
-        RestorePlayerUnitActionPoints(PlayFieldLogic.listOfUnits);
+        RestorePlayerUnitActionPoints(PlayFieldLogic.listOfPlayerUnits);
 
         // Наращивается счетчик текущего хода
         IncreaseCurrentTurnCounter();
