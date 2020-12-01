@@ -88,6 +88,7 @@ public class PlayFieldLogic : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(Player.selectedUnit);
         // Все действия игроком на игровом поле обрабатываются, если внутриигровое меню неактивно.
         if (!MenuPanelLogic.IsMenuActive())
         {

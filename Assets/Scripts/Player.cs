@@ -89,10 +89,7 @@ public class Player
     {
         City newCity = new City(name, coordinates, isCapital);
         listOfCities.Add(newCity);
-        GameData.cityLayer.SetTile(newCity.Coordinates, newCity.cityTile);
-        newCity.SetTerritory();
-        newCity.ShowTerritory();
-        //DisplayCityOnPlayField(newCity);
+        DisplayCityOnPlayField(newCity);
     }
 
     /// <summary>
@@ -115,6 +112,7 @@ public class Player
         GameData.cityLayer.SetTile(city.Coordinates, null);
     }
 
+
     /// <summary>
     /// Отмечает юнит выбранным.
     /// </summary>
@@ -133,10 +131,15 @@ public class Player
             if(selectedUnit != null)
             {
                 // Если перед этим выбирался другой юнит, снимаем с него выделение.
-                selectedUnit.HideTilesForMoving();
+                UnselectUnit();
+                
             }
             // Обозначаем данный юнит как выбранный
             selectedUnit = unit;
+            //Меняем цвет выбранного юнита на градиентный желтый
+            selectedUnit.unitTile = GameData.selectedUnitTile;
+            GameData.unitLayer.SetTile(selectedUnit.Coordinates, selectedUnit.unitTile);
+
             UnitInfoPanelLogic.UpdateUnitInfo(selectedUnit);
             if(selectedUnit.ActionPoint > 0)
             {
@@ -152,12 +155,13 @@ public class Player
     /// </summary>
     public static void UnselectUnit()
     {
-        if(selectedUnit != null)
-        {
-            selectedUnit.HideTilesForMoving();
-            selectedUnit = null;
-            UnitInfoPanelLogic.unitInfoPanel.SetActive(false);
-        }
+        selectedUnit.HideTilesForMoving();
+        // Снимаем с юнита выделение, возвращая ему его основной цвет
+        selectedUnit.unitTile = GameData.initialUnitTile;
+        GameData.unitLayer.SetTile(selectedUnit.Coordinates, selectedUnit.unitTile);
+
+        selectedUnit = null;
+        UnitInfoPanelLogic.unitInfoPanel.SetActive(false);
     }
 
     /// <summary>

@@ -82,7 +82,7 @@ public class Human
         possibleTileCoordinatesForMoving = new List<Vector3Int>();          // У каждого человека есть соседние клетки для перемещения
         Name = GameData.GetRandomHumanName();                               // Получаем случайное имя для юнита-человека
         Coordinates = coordinates;                                          // Позиционируем его на карте
-        unitTile = GameData.unitHumanTile;                                  
+        unitTile = GameData.initialUnitTile;
         actionPoints = 2;                                                   // У человека изначально 2 очка действия
         toughness = 100;                                                    // 100 очков жизней
         strength = 20;                                                      // 20 очков силы
@@ -126,7 +126,7 @@ public class Human
             e = new Vector3Int(x + 1, y + 1, 0);
             f = new Vector3Int(x + 1, y - 1, 0);
         }
-        Vector3Int[] arr = { a, b, c, d, e, f };
+        Vector3Int[] arr = {Coordinates, a, b, c, d, e, f };
         foreach (Vector3Int coord in arr)
         {
             if (PlayFieldLogic.IsTileExists(coord))
