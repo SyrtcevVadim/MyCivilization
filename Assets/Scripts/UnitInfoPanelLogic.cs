@@ -60,7 +60,7 @@ public class UnitInfoPanelLogic : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    public void HideUnitInfo()
+    public static void HideUnitInfo()
     {
         unitInfoPanel.SetActive(false);
         PlayFieldLogic.selectedUnit.HideTilesForMoving();

@@ -62,6 +62,8 @@ public class PlayFieldLogic : MonoBehaviour
         listOfPlayerCities = new List<City>();  // Выделяем память для хранения списка городов
         listOfPlayerUnits = new List<Human>();        // Выделяем память для хранения списка дружественных юнитов
         listOfEnemyUnits = new List<Human>();      // Выделяем память для хранения списка вражескию юнитов
+        selectedUnit = null;
+        selectedCity = null;
     }
     private void Start()
     {
@@ -133,18 +135,27 @@ public class PlayFieldLogic : MonoBehaviour
             // Скрываем сетку возможных перемещений для предыдущего выбранного юнита
             selectedUnit.HideTilesForMoving();
         }
-        selectedUnit = unit;    // Отмечаем, что юнит выбран
-        // О выбранном юните в левом нижнем углу экрана выводится информация
-        UnitInfoPanelLogic.UpdateUnitInfo(selectedUnit);
-        // Если у выбранного юнита есть очки перемещения, надо отобразить сетку возможных перемещений.
-        if(selectedUnit.ActionPoint > 0)
+        // Если пользователь повторно нажимает ЛКМ по выбранному юниту.
+        if(selectedUnit == unit)
         {
-            // Просчитываем сетку возможных передвижений
-            selectedUnit.SetTilesForMoving();
-            // Отображаем данную сетку на игровом поле
-            selectedUnit.ShowTilesForMoving();
+            selectedUnit.HideTilesForMoving();
+            UnitInfoPanelLogic.HideUnitInfo();
+            selectedUnit = null;
         }
-        
+        else
+        {
+            selectedUnit = unit;    // Отмечаем, что юнит выбран
+                                    // О выбранном юните в левом нижнем углу экрана выводится информация
+            UnitInfoPanelLogic.UpdateUnitInfo(selectedUnit);
+            // Если у выбранного юнита есть очки перемещения, надо отобразить сетку возможных перемещений.
+            if (selectedUnit.ActionPoint > 0)
+            {
+                // Просчитываем сетку возможных передвижений
+                selectedUnit.SetTilesForMoving();
+                // Отображаем данную сетку на игровом поле
+                selectedUnit.ShowTilesForMoving();
+            }
+        }
     }
 
     /// <summary>
