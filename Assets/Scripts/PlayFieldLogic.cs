@@ -84,6 +84,31 @@ public class PlayFieldLogic : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Считает количество очков действия для того, чтобы переместить юнит в данную ячейку.
+    /// </summary>
+    /// <param name="coordinates">Координаты ячейки</param>
+    /// <returns>Количество очков действия, которые требуются для перемещения в данную ячейку</returns>
+    public static int GetTileAPRequirments(Vector3Int coordinates)
+    {
+        Tile tile = (Tile)GameData.baseLayer.GetTile(coordinates);
+        // Проверяем, не требует ли данная ячейка 1 ОД
+        foreach(string item1AP in GameData.tilesRequired1AP)
+        {
+            if(item1AP == tile.name)
+            {
+                return 1;
+            }
+        }
+        foreach(string item2AP in GameData.tilesRequired2AP)
+        {
+            if(item2AP == tile.name)
+            {
+                return 2;
+            }
+        }
+        return 3;
+    }
 
 
     private void Update()

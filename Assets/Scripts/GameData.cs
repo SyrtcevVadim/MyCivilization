@@ -72,7 +72,15 @@ public class GameData:MonoBehaviour
     /// </summary>
     public static Tile selectedUnitTile;
 
-
+    /// <summary>
+    /// Список имен тайлов, которые требуют 2 очка действия для передвижения в них
+    /// </summary>
+    public static string[] tilesRequired2AP = { "DeciduousForest1Dirt", "DeciduousForest1Glade", "DeciduousForest2Dirt", "DeciduousForest2Glade","SpruceForest1Glade",
+"SpruceForest2Dirt","SpruceForest2Glade","SpruceForest1Dirt","SandstoneDirt","SandstoneGlade","Stone1Dirt","Stone1Glade","Stone2Dirt"};
+    /// <summary>
+    /// Список имен тайлов, которые трубуют 1 очко действия для передвижения в них
+    /// </summary>
+    public static string[] tilesRequired1AP = { "Glade", "Dirt" };
 
     /// <summary>
     /// Список возможных имен для юнитов в игре.
