@@ -57,12 +57,12 @@ public class UnitInfoPanelLogic : MonoBehaviour
         unitArmorLabel.text = unit.armor.ToString();                           
         unitInfoPanel.SetActive(true);                                             
     }
+
     /// <summary>
-    /// 
+    /// Вызывается при нажатии на кнопку закрытия меню информации о выбранном юните.
     /// </summary>
-    public static void HideUnitInfo()
+    public void OnCloseUnitInfoButtonClick()
     {
-        unitInfoPanel.SetActive(false);
-        PlayFieldLogic.selectedUnit.HideTilesForMoving();
+        Player.UnselectUnit();
     }
 }

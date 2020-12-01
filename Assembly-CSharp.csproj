@@ -66,11 +66,13 @@
     <Compile Include="Assets\Scripts\CameraMoving.cs" />
     <Compile Include="Assets\Scripts\City.cs" />
     <Compile Include="Assets\Scripts\CityInfoPanelLogic.cs" />
+    <Compile Include="Assets\Scripts\Data.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />
     <Compile Include="Assets\Scripts\Human.cs" />
     <Compile Include="Assets\Scripts\MainMenuLogic.cs" />
     <Compile Include="Assets\Scripts\MenuPanelLogic.cs" />
     <Compile Include="Assets\Scripts\PlayFieldLogic.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\SettingsMenuLogic.cs" />
     <Compile Include="Assets\Scripts\StatusBarLogic.cs" />
     <Compile Include="Assets\Scripts\UILogic.cs" />

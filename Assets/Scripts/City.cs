@@ -51,7 +51,7 @@ public class City
             scienceGrowth = 1;                                 // Прирост науки
             populationCounter = 3;                             // Текущее население города
             maxPossibleProductionValue = 400;                  // Объем складов для производимой продукции в городе.
-            this.cityTile = GameData.capitalCityTile;          // Устанавливаем тайл-столицы для города столицы
+            cityTile = GameData.capitalCityTile;          // Устанавливаем тайл-столицы для города столицы
         }
         else
         {
@@ -60,7 +60,7 @@ public class City
             scienceGrowth = 0;                                 // Прирост науки
             populationCounter = 1;                             // Текущее население города
             maxPossibleProductionValue = 100;                  // Объем складов для производимой продукции в городе
-            this.cityTile = GameData.provincialCityTile;       // Устанавливаем тайл-провинции для города-провинции
+            cityTile = GameData.provincialCityTile;       // Устанавливаем тайл-провинции для города-провинции
         }
         this.Name = name;               // Устанавливаем имя города
         this.coordinates = coordinates; // Сохраняем координаты города на карте

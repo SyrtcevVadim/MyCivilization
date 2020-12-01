@@ -34,10 +34,10 @@ public class StatusBarLogic : MonoBehaviour
     /// </summary>
     public static void UpdateStatusBar()
     {
-        if(PlayFieldLogic.listOfPlayerCities != null)
+        if(Player.listOfCities != null)
         {
-            UILogic.UpdateTotalGoldGrowth(PlayFieldLogic.listOfPlayerCities);
-            UILogic.UpdateTotalScienceGrowth(PlayFieldLogic.listOfPlayerCities);
+            UILogic.UpdateTotalGoldGrowth(Player.listOfCities);
+            UILogic.UpdateTotalScienceGrowth(Player.listOfCities);
         }
         goldReserveLabel.text = string.Format("Gold:{0}|{1}{2}", GameData.totalGoldReserve, (GameData.totalGoldGrowth >= 0) ? "+" : "-", GameData.totalGoldGrowth);
         scienceGrowthLabel.text = string.Format("Science:+{0}", GameData.totalScienceGrowth);

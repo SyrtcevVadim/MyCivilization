@@ -33,7 +33,7 @@ public class GameData:MonoBehaviour
     /// <summary>
     /// Слой городов игрового поля
     /// </summary>
-    public static Tilemap townLayer;
+    public static Tilemap cityLayer;
     /// <summary>
     /// Слой юнитов игрового поля
     /// </summary>
@@ -67,9 +67,9 @@ public class GameData:MonoBehaviour
     /// Тайл для отображения ячеек, в которые юнит может пойти
     /// </summary>
     public static Tile tileForMovingIn;
-    
 
-
+    Color initialUnitHumanTileColor;
+    Color selectedUnitHumanTileColor;
 
 
 
@@ -92,18 +92,20 @@ public class GameData:MonoBehaviour
         psevdoRandomNumberGenerator = new System.Random();
         // Получаем все слои игрового поля
         baseLayer = GameObject.Find("BaseLayer").GetComponent<Tilemap>();           // Получаем слой ландшафта
-        townLayer = GameObject.Find("TownLayer").GetComponent<Tilemap>();           // Получаем слой городов
+        cityLayer = GameObject.Find("CityLayer").GetComponent<Tilemap>();           // Получаем слой городов
         unitLayer = GameObject.Find("UnitLayer").GetComponent<Tilemap>();           // Получаем слой юнитов
         territoryLayer = GameObject.Find("TerritoryLayer").GetComponent<Tilemap>(); // Получаем слой территории
         movementLayer = GameObject.Find("MovementLayer").GetComponent<Tilemap>();   // Получаем слой возможных передвижений юнита
 
         // Получаем все возможные тайлы
-        capitalCityTile = Resources.Load<Tile>(@"Palettes\TownLayerPalette\CapitalCity");       // Получаем тайл города-столицы
-        provincialCityTile = Resources.Load<Tile>(@"Palettes\TownLayerPalette\ProvincialCity"); // Получаем тайл города-провинции
+        capitalCityTile = Resources.Load<Tile>(@"Palettes\CityLayerPalette\CapitalCity");       // Получаем тайл города-столицы
+        provincialCityTile = Resources.Load<Tile>(@"Palettes\CityLayerPalette\ProvincialCity"); // Получаем тайл города-провинции
         unitHumanTile = Resources.Load<Tile>(@"Palettes\UnitLayerPalette\Unit");                // Получаем тайл юнита-человека
         territoryTile = Resources.Load<Tile>(@"Palettes\TerritoryLayerPalette\TerritoryTile");  // Получаем тайл территории
         tileForMovingIn = Resources.Load<Tile>(@"Palettes\MovementLayerPalette\TileForMovingIn");   // Получаем тайл для отображения клеток для возможного перемещения
 
-
+        // Сохраняем изначальный цвет юнита.
+        initialUnitHumanTileColor = unitHumanTile.color;
+        // Когда юнит выбран, его цвет меняется на желтый
     }
 }

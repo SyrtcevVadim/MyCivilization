@@ -81,11 +81,11 @@ public class UILogic : MonoBehaviour
     public void OnEndTurnButtonClick()
     {
 
-        UpdateTotalScienceGrowth(PlayFieldLogic.listOfPlayerCities);
-        UpdateTotalGoldGrowth(PlayFieldLogic.listOfPlayerCities);
+        UpdateTotalScienceGrowth(Player.listOfCities);
+        UpdateTotalGoldGrowth(Player.listOfCities);
 
         // После окончания хода у всех юнитов восстанавливаются очки действий(action points)
-        RestorePlayerUnitActionPoints(PlayFieldLogic.listOfPlayerUnits);
+        RestorePlayerUnitActionPoints(Player.listOfUnits);
 
         // Наращивается счетчик текущего хода
         IncreaseCurrentTurnCounter();
@@ -93,20 +93,20 @@ public class UILogic : MonoBehaviour
         // Если какой-то юнит оставлся активным на момент окончания хода, обновим о нем информацию.
         if(UnitInfoPanelLogic.unitInfoPanel.activeSelf)
         {
-            UnitInfoPanelLogic.UpdateUnitInfo(PlayFieldLogic.selectedUnit);
-            PlayFieldLogic.selectedUnit.ShowTilesForMoving();
+            UnitInfoPanelLogic.UpdateUnitInfo(Player.selectedUnit);
+            Player.selectedUnit.ShowTilesForMoving();
         }
 
         // Увеличиваем счетчик запасов золота
         UpdateTotalGoldReserve();
         StatusBarLogic.UpdateStatusBar();
-        foreach(City city in PlayFieldLogic.listOfPlayerCities)
+        foreach(City city in Player.listOfCities)
         {
             city.totalProductionValue += city.productionGrowth;
         }
-        if(PlayFieldLogic.selectedCity != null)
+        if(Player.selectedCity != null)
         {
-            CityInfoPanelLogic.UpdateCityInfo(PlayFieldLogic.selectedCity);
+            CityInfoPanelLogic.UpdateCityInfo(Player.selectedCity);
         }
         
         
