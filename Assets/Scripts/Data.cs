@@ -5,17 +5,17 @@ public class Data
     /// <summary>
     /// Прирост золота в ход.
     /// </summary>
-    private int goldGrowthPerTurn;
+    public int goldGrowthPerTurn;
 
     /// <summary>
     /// Накопленное золото на текущий момент.
     /// </summary>
-    private int goldReserve;
+    public int goldReserve;
 
     /// <summary>
     /// Прирост науки в ход.
     /// </summary>
-    private int scienceGrowthPerTurn;
+    public int scienceGrowthPerTurn;
 
     /// <summary>
     /// Создает объект Data.

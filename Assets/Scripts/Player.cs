@@ -24,7 +24,7 @@ public class Player
     /// <summary>
     /// Хранит значения накопленных ресурсов игрока.
     /// </summary>
-    static Data data;
+    public static Data data;
 
     /// <summary>
     /// Инициализирует игрока.
@@ -112,7 +112,22 @@ public class Player
         GameData.cityLayer.SetTile(city.Coordinates, null);
     }
 
-
+    /// <summary>
+    /// Обновляет значения ресурсов игрока.
+    /// </summary>
+    public static void UpdatePlayerData()
+    {
+        data.goldGrowthPerTurn = 0;
+        data.scienceGrowthPerTurn = 0;
+        // Пересчитываем значения приростов золота/науки в ход
+        foreach(City city in listOfCities)
+        {
+            data.goldGrowthPerTurn += city.goldGrowth;
+            data.scienceGrowthPerTurn += city.scienceGrowth;
+        }
+        data.goldReserve += data.goldGrowthPerTurn;
+    }
+    
     /// <summary>
     /// Отмечает юнит выбранным.
     /// </summary>
@@ -189,6 +204,7 @@ public class Player
         CreateUnit(new Vector3Int(2, 3, 0));
         CreateUnit(new Vector3Int(-2, 2, 0));
         CreateUnit(new Vector3Int(0, -2, 0));
+        UpdatePlayerData();
     }
 
 

@@ -25,6 +25,10 @@ public class StatusBarLogic : MonoBehaviour
         goldReserveLabel = GameObject.Find("GoldReserveLabel").GetComponent<Text>();
         scienceGrowthLabel = GameObject.Find("ScienceGrowthLabel").GetComponent<Text>();
 
+        
+    }
+    private void Start()
+    {
         // Устанавливаем начальное значение меток
         UpdateStatusBar();
     }
@@ -34,13 +38,8 @@ public class StatusBarLogic : MonoBehaviour
     /// </summary>
     public static void UpdateStatusBar()
     {
-        if(Player.listOfCities != null)
-        {
-            UILogic.UpdateTotalGoldGrowth(Player.listOfCities);
-            UILogic.UpdateTotalScienceGrowth(Player.listOfCities);
-        }
-        goldReserveLabel.text = string.Format("Gold:{0}|{1}{2}", GameData.totalGoldReserve, (GameData.totalGoldGrowth >= 0) ? "+" : "-", GameData.totalGoldGrowth);
-        scienceGrowthLabel.text = string.Format("Science:+{0}", GameData.totalScienceGrowth);
+        goldReserveLabel.text = string.Format("Gold:{0}|{1}{2}", Player.data.goldReserve, (Player.data.goldGrowthPerTurn >= 0) ? "+" : "-", Player.data.goldGrowthPerTurn);
+        scienceGrowthLabel.text = string.Format("Science:+{0}", Player.data.scienceGrowthPerTurn);
         currentTurnLabel.text = string.Format("Turn:{0}", GameData.currentTurnCounter);
     }
     

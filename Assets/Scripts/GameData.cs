@@ -13,18 +13,6 @@ public class GameData:MonoBehaviour
     /// Счетчик номера текущего хода
     /// </summary>
     public static uint currentTurnCounter = 1;
-    /// <summary>
-    /// Общий золотой запас державы
-    /// </summary>
-    public static int totalGoldReserve = 0;
-    /// <summary>
-    /// Прирост золота в ход
-    /// </summary>
-    public static int totalGoldGrowth = 0;
-    /// <summary>
-    /// Прирост науки в ход
-    /// </summary>
-    public static int totalScienceGrowth = 0;
 
     /// <summary>
     /// Слой ландшафта игрового поля
@@ -75,8 +63,8 @@ public class GameData:MonoBehaviour
     /// <summary>
     /// Список имен тайлов, которые требуют 2 очка действия для передвижения в них
     /// </summary>
-    public static string[] tilesRequired2AP = { "DeciduousForest1Dirt", "DeciduousForest1Glade", "DeciduousForest2Dirt", "DeciduousForest2Glade","SpruceForest1Glade",
-"SpruceForest2Dirt","SpruceForest2Glade","SpruceForest1Dirt","SandstoneDirt","SandstoneGlade","Stone1Dirt","Stone1Glade","Stone2Dirt"};
+    public static string[] tilesRequired2AP = { "DeciduousForest1Glade",  "DeciduousForest2Glade", "SpruceForest1Glade", "SpruceForest2Glade",
+"DeciduousForest1Dirt","DeciduousForest2Dirt","SpruceForest1Dirt","SpruceForest2Dirt", "SandstoneDirt","SandstoneGlade","Stone1Dirt","Stone1Glade","Stone2Dirt"};
     /// <summary>
     /// Список имен тайлов, которые трубуют 1 очко действия для передвижения в них
     /// </summary>
