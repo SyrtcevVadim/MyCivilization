@@ -50,7 +50,7 @@ public class City
             goldGrowth = 3;                                    // Прирост золота
             scienceGrowth = 1;                                 // Прирост науки
             populationCounter = 3;                             // Текущее население города
-            maxPossibleProductionValue = 400;                  // Объем складов для производимой продукции в городе.
+            maxPossibleProductionValue = 20;                  // Объем складов для производимой продукции в городе.
             cityTile = GameData.capitalCityTile;          // Устанавливаем тайл-столицы для города столицы
         }
         else
@@ -59,7 +59,7 @@ public class City
             goldGrowth = 1;                                    // Прирост золота
             scienceGrowth = 0;                                 // Прирост науки
             populationCounter = 1;                             // Текущее население города
-            maxPossibleProductionValue = 100;                  // Объем складов для производимой продукции в городе
+            maxPossibleProductionValue = 15;                  // Объем складов для производимой продукции в городе
             cityTile = GameData.provincialCityTile;       // Устанавливаем тайл-провинции для города-провинции
         }
         this.Name = name;               // Устанавливаем имя города
@@ -158,5 +158,15 @@ public class City
         }    
     }
 
-    
+    public void GenerateProduction()
+    {
+        if(totalProductionValue + productionGrowth <= maxPossibleProductionValue)
+        {
+            totalProductionValue += productionGrowth;
+        }
+        else
+        {
+            totalProductionValue = maxPossibleProductionValue;
+        }
+    }
 }

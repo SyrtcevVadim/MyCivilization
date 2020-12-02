@@ -45,14 +45,9 @@ public class UILogic : MonoBehaviour
     /// </summary>
     public void OnEndTurnButtonClick()
     {
-
-        //UpdateTotalScienceGrowth(Player.listOfCities);
-        //UpdateTotalGoldGrowth(Player.listOfCities);
         Player.UpdatePlayerData();
-
         // После окончания хода у всех юнитов восстанавливаются очки действий(action points)
         RestorePlayerUnitActionPoints(Player.listOfUnits);
-
         // Наращивается счетчик текущего хода
         IncreaseCurrentTurnCounter();
 
@@ -63,20 +58,16 @@ public class UILogic : MonoBehaviour
             Player.selectedUnit.SetTilesForMoving();
             Player.selectedUnit.ShowTilesForMoving();
         }
-
-        //// Увеличиваем счетчик запасов золота
-        //UpdateTotalGoldReserve();
+        
         StatusBarLogic.UpdateStatusBar();
         foreach(City city in Player.listOfCities)
         {
-            city.totalProductionValue += city.productionGrowth;
+            city.GenerateProduction();
         }
         if(Player.selectedCity != null)
         {
             CityInfoPanelLogic.UpdateCityInfo(Player.selectedCity);
         }
-        
-        
     }
     /// <summary>
     /// Вызывается при нажатии пользователем на кнопку вызова игрового меню openMenuButton.
