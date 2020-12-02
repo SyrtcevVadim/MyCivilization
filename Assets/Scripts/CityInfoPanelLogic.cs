@@ -113,6 +113,7 @@ public class CityInfoPanelLogic : MonoBehaviour
            
 
         }
+        UpdateCityInfo(Player.selectedCity);
     }
 
 
