@@ -10,7 +10,7 @@ public class MainMenuLogic : MonoBehaviour
     }
     public void OnOpenCreditsButtonClick()
     {
-
+        SceneManager.LoadScene("CreditsMenu");
     }
     public void OnCloseGameButtonClick()
     {

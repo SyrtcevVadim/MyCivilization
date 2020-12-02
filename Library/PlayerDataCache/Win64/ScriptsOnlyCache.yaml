@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - CameraMoving
     - CityInfoPanelLogic
+    - CreditsMenuLogic
     - GameData
     - MainMenuLogic
     - MenuPanelLogic
@@ -41,6 +42,55 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
   sceneClasses:
+    Assets/Scenes/CreditsMenu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11168}
+    - Class: 114
+      Script: {instanceID: 11460}
+    - Class: 114
+      Script: {instanceID: 11514}
+    - Class: 114
+      Script: {instanceID: 12186}
+    - Class: 114
+      Script: {instanceID: 12898}
+    - Class: 114
+      Script: {instanceID: 13658}
+    - Class: 114
+      Script: {instanceID: 14082}
+    - Class: 114
+      Script: {instanceID: 14274}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
     Assets/Scenes/MainMenu.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -63,25 +113,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 590}
     - Class: 114
-      Script: {instanceID: 11148}
+      Script: {instanceID: 11168}
     - Class: 114
-      Script: {instanceID: 11170}
+      Script: {instanceID: 11460}
     - Class: 114
-      Script: {instanceID: 11462}
+      Script: {instanceID: 11514}
     - Class: 114
-      Script: {instanceID: 11516}
+      Script: {instanceID: 11738}
     - Class: 114
-      Script: {instanceID: 11740}
-    - Class: 114
-      Script: {instanceID: 12188}
+      Script: {instanceID: 12186}
     - Class: 114
       Script: {instanceID: 12582}
     - Class: 114
-      Script: {instanceID: 13656}
+      Script: {instanceID: 12898}
     - Class: 114
-      Script: {instanceID: 14268}
+      Script: {instanceID: 13658}
     - Class: 114
-      Script: {instanceID: 14310}
+      Script: {instanceID: 14274}
+    - Class: 114
+      Script: {instanceID: 14316}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -124,23 +174,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 590}
     - Class: 114
-      Script: {instanceID: 11148}
+      Script: {instanceID: 11168}
     - Class: 114
-      Script: {instanceID: 11170}
+      Script: {instanceID: 11436}
     - Class: 114
-      Script: {instanceID: 11438}
+      Script: {instanceID: 11460}
     - Class: 114
-      Script: {instanceID: 11462}
+      Script: {instanceID: 11514}
     - Class: 114
-      Script: {instanceID: 11516}
+      Script: {instanceID: 11692}
     - Class: 114
-      Script: {instanceID: 11694}
+      Script: {instanceID: 11942}
     - Class: 114
-      Script: {instanceID: 11944}
+      Script: {instanceID: 12070}
     - Class: 114
-      Script: {instanceID: 12072}
-    - Class: 114
-      Script: {instanceID: 12188}
+      Script: {instanceID: 12186}
     - Class: 114
       Script: {instanceID: 12478}
     - Class: 114
@@ -148,15 +196,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12620}
     - Class: 114
-      Script: {instanceID: 13656}
+      Script: {instanceID: 12898}
     - Class: 114
-      Script: {instanceID: 14268}
+      Script: {instanceID: 13658}
     - Class: 114
-      Script: {instanceID: 14288}
+      Script: {instanceID: 14274}
     - Class: 114
-      Script: {instanceID: 14310}
+      Script: {instanceID: 14294}
     - Class: 114
-      Script: {instanceID: 14378}
+      Script: {instanceID: 14316}
+    - Class: 114
+      Script: {instanceID: 14384}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -182,12 +232,6 @@ ScriptsOnlyBuild:
     - Class: 1839735485
       Script: {instanceID: 0}
   scriptHashData:
-  - hash:
-      serializedVersion: 2
-      Hash: 5f1752ed2092162f016c19510c28a8b9
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
   - hash:
       serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
@@ -514,6 +558,12 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
+      Hash: 5f1752ed2092162f016c19510c28a8b9
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
       Hash: f84d945e5e1ca985698660fc26e9657f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -622,6 +672,12 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CreditsMenuLogic
+  - hash:
+      serializedVersion: 2
       Hash: 8cd1cbba27f3cb1717254f668e9e0d5a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -725,5 +781,6 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
+  - Assets/Scenes/CreditsMenu.unity
   - Assets/Scenes/PlayScene.unity
   playerPath: "C:/Users/\u0412\u0430\u0434\u0438\u043C/Desktop/Build/StepWiseGame.exe"
