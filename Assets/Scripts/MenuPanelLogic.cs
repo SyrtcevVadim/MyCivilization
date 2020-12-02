@@ -88,7 +88,6 @@ public class MenuPanelLogic : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Tick in MenuPanelLogic update");
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SetMenuActiveOff();
