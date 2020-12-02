@@ -141,7 +141,7 @@ public class Player
             GameData.unitLayer.SetTile(selectedUnit.Coordinates, selectedUnit.unitTile);
 
             UnitInfoPanelLogic.UpdateUnitInfo(selectedUnit);
-            if(selectedUnit.ActionPoint > 0)
+            if(selectedUnit.ActionPoints > 0)
             {
                 selectedUnit.SetTilesForMoving();
                 selectedUnit.ShowTilesForMoving();

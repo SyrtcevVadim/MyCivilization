@@ -94,6 +94,7 @@ public class UILogic : MonoBehaviour
         if(UnitInfoPanelLogic.unitInfoPanel.activeSelf)
         {
             UnitInfoPanelLogic.UpdateUnitInfo(Player.selectedUnit);
+            Player.selectedUnit.SetTilesForMoving();
             Player.selectedUnit.ShowTilesForMoving();
         }
 

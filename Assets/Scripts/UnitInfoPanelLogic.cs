@@ -51,7 +51,7 @@ public class UnitInfoPanelLogic : MonoBehaviour
     {
         unitNameLabel.text = string.Format("Name: {0}", unit.Name);     
         unitClassLabel.text = string.Format("Class: {0}", "Human");        
-        unitActionPointLabel.text = unit.ActionPoint.ToString();               
+        unitActionPointLabel.text = unit.ActionPoints.ToString();               
         unitStrengthLabel.text = unit.strength.ToString();                     
         unitToughnessLabel.text = unit.toughness.ToString();                   
         unitArmorLabel.text = unit.armor.ToString();                           

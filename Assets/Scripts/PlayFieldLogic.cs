@@ -92,8 +92,12 @@ public class PlayFieldLogic : MonoBehaviour
     public static int GetTileAPRequirments(Vector3Int coordinates)
     {
         Tile tile = (Tile)GameData.baseLayer.GetTile(coordinates);
+        if (tile == null)
+        {
+            return -1;
+        }
         // Проверяем, не требует ли данная ячейка 1 ОД
-        foreach(string item1AP in GameData.tilesRequired1AP)
+        foreach (string item1AP in GameData.tilesRequired1AP)
         {
             if(item1AP == tile.name)
             {
@@ -107,13 +111,13 @@ public class PlayFieldLogic : MonoBehaviour
                 return 2;
             }
         }
+        
         return 3;
     }
 
 
     private void Update()
     {
-        Debug.Log(Player.selectedUnit);
         // Все действия игроком на игровом поле обрабатываются, если внутриигровое меню неактивно.
         if (!MenuPanelLogic.IsMenuActive())
         {
@@ -126,7 +130,6 @@ public class PlayFieldLogic : MonoBehaviour
                 Vector3 clickedWorldCoordinates = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 // Конвертируем позицию этой точки в координаты ячейки, в которой она содержится
                 Vector3Int clickedTileCoordinates = GameData.baseLayer.WorldToCell(clickedWorldCoordinates);
-
                 // Проверяем, кликнул ли пользователь ЛКМ по одному из своих городов:
                 ProcessClickOnPlayerCity(clickedTileCoordinates);
                 // Проверяем, кликнул ли пользователь ЛКМ по одному из своих юнитов:
@@ -139,14 +142,14 @@ public class PlayFieldLogic : MonoBehaviour
                 Vector3 clickedWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector3Int destination = GameData.baseLayer.WorldToCell(clickedWorldPosition);
 
-                if (Player.selectedUnit!= null && Player.selectedUnit.IsMovingPossible(destination))
+                if (Player.selectedUnit != null && Player.selectedUnit.IsMovingPossible(destination))
                 {
                     // Если юнит выбран и движение в выбранную клетку возможно, производим перемещение юнита
                     Player.selectedUnit.Move(destination);     // Производим перемещение юнита в указанную клетку
                     UnitInfoPanelLogic.UpdateUnitInfo(Player.selectedUnit);   // Обновляем информацию о юните в UnitInfoPanel
                     Player.selectedUnit.HideTilesForMoving();  // После движения убираем сетку возможных тайлов для передвижения
                     Player.selectedUnit.SetTilesForMoving();   // Просчитываем новую сетку возможных передвижений
-                    if (Player.selectedUnit.ActionPoint > 0)
+                    if (Player.selectedUnit.ActionPoints > 0)
                     {
                         Player.selectedUnit.ShowTilesForMoving();  // Вновь отрисовываем сетку возможных тайлов для перемещения
                     }

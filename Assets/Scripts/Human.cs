@@ -2,6 +2,17 @@
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 
+public class baseLayerTile
+{
+    public Vector3Int coordinates;
+    public int requiresAP;
+    public baseLayerTile(Vector3Int coord, int requiresAP)
+    {
+        this.coordinates = coord;
+        this.requiresAP = requiresAP;
+    }
+}
+
 public class Human
 {
 
@@ -13,7 +24,7 @@ public class Human
     /// <summary>
     /// Очки действия юнита
     /// </summary>
-    public int ActionPoint
+    public int ActionPoints
     {
         get
         {
@@ -79,7 +90,8 @@ public class Human
     /// <param name="unitTile">Tile, которым представлен спрайт человека</param>
     public Human(Vector3Int coordinates)
     {
-        possibleTileCoordinatesForMoving = new List<Vector3Int>();          // У каждого человека есть соседние клетки для перемещения
+        movingTilesGrid = new List<baseLayerTile>();          // У каждого человека есть соседние клетки для перемещения
+        movingTilesCoordinates = new List<Vector3Int>();
         Name = GameData.GetRandomHumanName();                               // Получаем случайное имя для юнита-человека
         Coordinates = coordinates;                                          // Позиционируем его на карте
         unitTile = GameData.initialUnitTile;
@@ -93,7 +105,71 @@ public class Human
     /// <summary>
     /// Список всех ячеек, в которые юнит может совершить перемещение.
     /// </summary>
-    public List<Vector3Int> possibleTileCoordinatesForMoving;
+    public List<baseLayerTile> movingTilesGrid;
+    /// <summary>
+    /// Координаты всех ячеек, в которые юнит может совершить перемещение.
+    /// </summary>
+    public List<Vector3Int> movingTilesCoordinates;
+
+    void AddNeighbourTilesToMovingGrid(Vector3Int coordinates, int remainingAP, int requireAP)
+    {
+        if (remainingAP >= 0)
+        {
+            int x = coordinates.x, y = coordinates.y;
+            Vector3Int a, b, c, d, e, f;
+            if (System.Math.Abs(y) % 2 == 0)
+            {
+                // Координаты 6 смежных ячеек
+                a = new Vector3Int(x - 1, y, 0);
+                b = new Vector3Int(x + 1, y, 0);
+                c = new Vector3Int(x, y + 1, 0);
+                d = new Vector3Int(x, y - 1, 0);
+                e = new Vector3Int(x - 1, y + 1, 0);
+                f = new Vector3Int(x - 1, y - 1, 0);
+
+            }
+            else
+            {
+                // Координаты 6 смежных ячеек
+                a = new Vector3Int(x - 1, y, 0);
+                b = new Vector3Int(x + 1, y, 0);
+                c = new Vector3Int(x, y + 1, 0);
+                d = new Vector3Int(x, y - 1, 0);
+                e = new Vector3Int(x + 1, y + 1, 0);
+                f = new Vector3Int(x + 1, y - 1, 0);
+            }
+            Vector3Int[] tiles = { a, b, c, d, e, f };
+            // Добавляем текущую ячейку в сетку, если ее там еще нет
+            if (!movingTilesCoordinates.Contains(coordinates))
+            {
+                //Debug.Log("require AP: " + requireAP + "| tile: " + coordinates);
+                movingTilesGrid.Add(new baseLayerTile(coordinates, requireAP));
+                movingTilesCoordinates.Add(coordinates);
+            }
+            // Если текущая ячейка уже существует, но в нее можно добраться коротким путем.
+            else if(movingTilesGrid.Find(par => par.coordinates == coordinates).requiresAP > requireAP)
+            {
+                movingTilesGrid.Find(par => par.coordinates == coordinates).requiresAP = requireAP;
+                //Debug.Log("EXCHANGING: require AP: " + requireAP + "| tile: " + coordinates);
+            }
+            foreach (Vector3Int item in tiles)
+            {
+                if(PlayFieldLogic.GetTileAPRequirments(item) == -1)
+                {
+                    // Непроходимая ячейка.
+                }
+                else
+                {
+                    int newRemainngAP = remainingAP - PlayFieldLogic.GetTileAPRequirments(item);
+                    if (newRemainngAP >= 0)
+                    {
+                        AddNeighbourTilesToMovingGrid(item, newRemainngAP, requireAP+PlayFieldLogic.GetTileAPRequirments(item));
+                    }
+                }
+            }
+        }
+    }
+
 
     /// <summary>
     /// Записывает в possibleTileCoordinatesForMovement все возможные ячейки для передвижения. 
@@ -101,39 +177,10 @@ public class Human
     /// </summary>
     public void SetTilesForMoving()
     {
-        possibleTileCoordinatesForMoving.Clear();
-        int x = Coordinates.x;     // Псевдоним для unit.Coordinates.x
-        int y = Coordinates.y;     // Псевдоним для unit.Coordinates.y
-        Vector3Int a, b, c, d, e, f;
-        // В зависимости от четности номера строки координаты клеток соседей считаются по-разному
-        if (System.Math.Abs(y) % 2 == 0)
-        {
-            // Координаты 6 смежных ячеек
-            a = new Vector3Int(x - 1, y, 0);
-            b = new Vector3Int(x + 1, y, 0);
-            c = new Vector3Int(x, y + 1, 0);
-            d = new Vector3Int(x, y - 1, 0);
-            e = new Vector3Int(x - 1, y + 1, 0);
-            f = new Vector3Int(x - 1, y - 1, 0);
-        }
-        else
-        {
-            // Координаты 6 смежных ячеек
-            a = new Vector3Int(x - 1, y, 0);
-            b = new Vector3Int(x + 1, y, 0);
-            c = new Vector3Int(x, y + 1, 0);
-            d = new Vector3Int(x, y - 1, 0);
-            e = new Vector3Int(x + 1, y + 1, 0);
-            f = new Vector3Int(x + 1, y - 1, 0);
-        }
-        Vector3Int[] arr = {Coordinates, a, b, c, d, e, f };
-        foreach (Vector3Int coord in arr)
-        {
-            if (PlayFieldLogic.IsTileExists(coord))
-            {
-                possibleTileCoordinatesForMoving.Add(coord);
-            }
-        }
+        movingTilesGrid.Clear();
+        movingTilesCoordinates.Clear();
+        AddNeighbourTilesToMovingGrid(Coordinates, actionPoints, 0);
+        
     }
 
     /// <summary>
@@ -141,9 +188,9 @@ public class Human
     /// </summary>
     public void ShowTilesForMoving()
     {
-        foreach(Vector3Int coord in possibleTileCoordinatesForMoving)
+        foreach(baseLayerTile tile in movingTilesGrid)
         {
-            GameData.movementLayer.SetTile(coord, GameData.tileForMovingIn);
+            GameData.movementLayer.SetTile(tile.coordinates, GameData.tileForMovingIn);
         }
     }
 
@@ -152,7 +199,7 @@ public class Human
     /// </summary>
     public void HideTilesForMoving()
     {
-        foreach(Vector3Int coord in possibleTileCoordinatesForMoving)
+        foreach(Vector3Int coord in movingTilesCoordinates)
         {
             GameData.movementLayer.SetTile(coord, null);
         }
@@ -165,11 +212,22 @@ public class Human
     /// <returns>Если перемещение возможно, true. Иначе - false.</returns>
     public bool IsMovingPossible(Vector3Int destination)
     {
-        if(actionPoints > 0)
+        //baseLayerTile destinationTile = movingTilesGrid.Find(x => x.coordinates == destination);
+        //if((actionPoints - destinationTile.requiresAP > 0) && (destination != coordinates))
+        //{
+        //    foreach (baseLayerTile tile in movingTilesGrid)
+        //    {
+        //        if (destination == tile.coordinates)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //}
+        if(destination !=coordinates)
         {
-            foreach (Vector3Int coord in possibleTileCoordinatesForMoving)
+            foreach(Vector3Int coord in movingTilesCoordinates)
             {
-                if (destination == coord)
+                if(destination == coord)
                 {
                     return true;
                 }
@@ -182,13 +240,13 @@ public class Human
     /// Перемещает юнит в ячейку с координатами destination.
     /// </summary>
     /// <param name="destination">Координаты ячейки, в которую юнит перемещается.</param>
-    public void Move(Vector3Int destination)
+    public void Move(Vector3Int coordinates)
     {
         
-        GameData.unitLayer.SetTile(Coordinates, null);      // Удаляем тайл юнита со старой позиции
-        GameData.unitLayer.SetTile(destination, unitTile);  // Отрисовываем тайл юнита на новой позиции
-        Coordinates = destination;                          // Сохраняем новые координаты юнита
-        actionPoints -= 1;                                  // Уменьшаем количество очков действий на 1
+        GameData.unitLayer.SetTile(Coordinates, null);                      // Удаляем тайл юнита со старой позиции
+        GameData.unitLayer.SetTile(coordinates, unitTile);  // Отрисовываем тайл юнита на новой позиции
+        Coordinates = coordinates;                          // Сохраняем новые координаты юнита
+        actionPoints -= movingTilesGrid.Find(x => x.coordinates == coordinates).requiresAP ;// Уменьшаем количество очков действий на 1
     }
     
     
