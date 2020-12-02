@@ -118,6 +118,11 @@ public class PlayFieldLogic : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            MenuPanelLogic.IsMenuPanelActive = true;
+            MenuPanelLogic.menuBackground.SetActive(true);
+        }
         // Все действия игроком на игровом поле обрабатываются, если внутриигровое меню неактивно.
         if (!MenuPanelLogic.IsMenuActive())
         {

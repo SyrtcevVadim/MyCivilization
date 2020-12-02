@@ -35,12 +35,12 @@ public class MenuPanelLogic : MonoBehaviour
     /// <summary>
     /// Задний фон меню.
     /// </summary>
-    GameObject menuBackground;
+    public static GameObject menuBackground;
 
     /// <summary>
     /// Флаг, показывающий, активно ли внутриигровое меню
     /// </summary>
-    private static bool IsMenuPanelActive;
+    public static bool IsMenuPanelActive;
 
     /// <summary>
     /// Делает внутриигровое меню активным.
@@ -85,7 +85,16 @@ public class MenuPanelLogic : MonoBehaviour
         LoadSettings();     // Получаем пользовательские настройки предыдущей(если была) сессии
         SetMenuActiveOff(); // Изначально внутриигровое меню неактивно.
     }
-    
+
+    private void Update()
+    {
+        Debug.Log("Tick in MenuPanelLogic update");
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SetMenuActiveOff();
+        }
+    }
+
     /// <summary>
     /// Загружает пользовательские настройки.
     /// </summary>
