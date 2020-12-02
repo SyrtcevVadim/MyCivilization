@@ -180,6 +180,15 @@ public class Human
         movingTilesGrid.Clear();
         movingTilesCoordinates.Clear();
         AddNeighbourTilesToMovingGrid(Coordinates, actionPoints, 0);
+        // Запрещаем юнитам ходить в ячейки, в которых уже стоят союзные юниты.
+        foreach(Human unit in Player.listOfUnits)
+        {
+            if(movingTilesCoordinates.Contains(unit.coordinates) && unit.coordinates != coordinates)
+            {
+                movingTilesCoordinates.Remove(unit.coordinates);
+                movingTilesGrid.Remove(movingTilesGrid.Find(x => x.coordinates == unit.coordinates));
+            }
+        }
         
     }
 
