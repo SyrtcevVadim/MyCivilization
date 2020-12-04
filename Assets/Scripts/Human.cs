@@ -69,15 +69,36 @@ public class Human
     /// </summary>
     public  Tile unitTile;
 
+    // TODO переделать под индексатор. Опасно: выход за границы массива при получении максимального уровня!!
+    /// <summary>
+    /// Массив, содержащий необходимое количество опыта для получения каждого уровня. Номер уровня совпадает с индексом в данном массиве.
+    /// </summary>
+    public static int[] requiredExperienceForLevel = new int[] { 0, 5, 10, 15 };
+
     // Характеристики юнита
     /// <summary>
     /// Имя юнита
     /// </summary>
     public string Name { get; set; }
     /// <summary>
-    /// Жизненная сила юнита
+    /// Уровень юнита
     /// </summary>
-    public uint toughness;
+    public uint currentLevel;
+
+    /// <summary>
+    /// Максимально возможное количество очков здоровью у юнита.
+    /// </summary>
+    public uint maxHP;
+    /// <summary>
+    /// Текущее количество очков здоровья юнита.
+    /// </summary>
+    public uint remainHP;
+
+    /// <summary>
+    /// Количество очков опыта юнита.
+    /// </summary>
+    public uint collectedExperience;
+
     /// <summary>
     /// Ударная мощь юнита
     /// </summary>
@@ -86,6 +107,8 @@ public class Human
     /// Бронированность юнита
     /// </summary>
     public uint armor;
+
+
     /// <summary>
     /// Стоимость юнита в очках продукции.
     /// </summary>
@@ -99,13 +122,16 @@ public class Human
     /// <param name="unitTile">Tile, которым представлен спрайт человека</param>
     public Human(Vector3Int coordinates)
     {
-        movingGrid = new List<baseLayerTile>();          // У каждого человека есть соседние клетки для перемещения
+        movingGrid = new List<baseLayerTile>();                             // Выделяем память под сетку перемещения
 
         Name = GameData.GetRandomHumanName();                               // Получаем случайное имя для юнита-человека
         Coordinates = coordinates;                                          // Позиционируем его на карте
         unitTile = GameData.initialUnitTile;
         actionPoints = 2;                                                   // У человека изначально 2 очка действия
-        toughness = 100;                                                    // 100 очков жизней
+        maxHP = 100;                                                        // 100 очков жизней
+        remainHP = maxHP;                                                   // Изначально у юнита максимальное количество очков здоровья
+        collectedExperience = 0;                                               // При создании у юнита нет очков опыта
+        currentLevel = 0;                                                   
         strength = 20;                                                      // 20 очков силы
         armor = 3;                                                          // и 3 очка защиты
     }
@@ -117,7 +143,10 @@ public class Human
         Coordinates = coordinates;
         unitTile = GameData.initialUnitTile;
         actionPoints = startAP;
-        toughness = 100;
+        maxHP = 100;
+        remainHP = maxHP;
+        collectedExperience = 0;
+        currentLevel = 0;
         strength = 20;
         armor = 3;
     }
