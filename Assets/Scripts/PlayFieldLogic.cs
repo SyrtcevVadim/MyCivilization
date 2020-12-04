@@ -35,7 +35,7 @@ public class PlayFieldLogic : MonoBehaviour
     /// <param name="coordinates">Координаты ячейки, в которую пользователь кликнул ЛКМ.</param>
     private void ProcessClickOnPlayerCity(Vector3Int coordinates)
     {
-        // Пробегаемся по списку городов и проверяем наличие нажатия пользователем по одному из городов.
+        // Пробегаемся по списку городов и проверяем нажатия пользователем по одному из городов.
         foreach (City city in Player.listOfCities)
         {
             // Если пользователь нажал на какой-либо из своих городов
@@ -115,9 +115,43 @@ public class PlayFieldLogic : MonoBehaviour
         return 3;
     }
 
+    /// <summary>
+    /// Просчитываем координаты соседних клеток для текущей клетки с координатами coordinates.
+    /// </summary>
+    /// <param name="coordinates">Координаты текущей ячейки</param>
+    /// <returns>Массив из координат соседних для текущей клеток.</returns>
+    public static Vector3Int[] GetListOfNeighbourTiles(Vector3Int coordinates)
+    {
+        int x = coordinates.x, y = coordinates.y;
+        Vector3Int a, b, c, d, e, f;
+        if (System.Math.Abs(y) % 2 == 0)
+        {
+            // Координаты 6 смежных ячеек
+            a = new Vector3Int(x - 1, y, 0);
+            b = new Vector3Int(x + 1, y, 0);
+            c = new Vector3Int(x, y + 1, 0);
+            d = new Vector3Int(x, y - 1, 0);
+            e = new Vector3Int(x - 1, y + 1, 0);
+            f = new Vector3Int(x - 1, y - 1, 0);
+
+        }
+        else
+        {
+            // Координаты 6 смежных ячеек
+            a = new Vector3Int(x - 1, y, 0);
+            b = new Vector3Int(x + 1, y, 0);
+            c = new Vector3Int(x, y + 1, 0);
+            d = new Vector3Int(x, y - 1, 0);
+            e = new Vector3Int(x + 1, y + 1, 0);
+            f = new Vector3Int(x + 1, y - 1, 0);
+        }
+        return new Vector3Int[] { a, b, c, d, e, f };
+    }
+
 
     private void Update()
     {
+        // По нажатию клавиши Esc открывается внутриигровое меню
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             MenuPanelLogic.IsMenuPanelActive = true;

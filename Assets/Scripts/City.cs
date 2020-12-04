@@ -115,35 +115,15 @@ public class City
     /// </summary>
     public void SetTerritory()
     {
-        int x = Coordinates.x;
-        int y = Coordinates.y;
-        Vector3Int self, a, b, c, d, e, f;
-        self = new Vector3Int(x, y, 0);
-
-        if (System.Math.Abs(y) % 2 == 0)
+        // Ячейка с самим городом тоже принадлежит территории города
+        territory.Add(Coordinates);
+        // Получаем массив координат соседних для данной ячеек
+        Vector3Int[] neighbourTilesCoordinates = PlayFieldLogic.GetListOfNeighbourTiles(Coordinates);
+        foreach (Vector3Int item in neighbourTilesCoordinates)
         {
-            a = new Vector3Int(x - 1, y, 0);
-            b = new Vector3Int(x + 1, y, 0);
-            c = new Vector3Int(x, y + 1, 0);
-            d = new Vector3Int(x, y - 1, 0);
-            e = new Vector3Int(x - 1, y + 1, 0);
-            f = new Vector3Int(x - 1, y - 1, 0);
-        }
-        else
-        {
-            a = new Vector3Int(x - 1, y, 0);
-            b = new Vector3Int(x + 1, y, 0);
-            c = new Vector3Int(x, y + 1, 0);
-            d = new Vector3Int(x, y - 1, 0);
-            e = new Vector3Int(x + 1, y + 1, 0);
-            f = new Vector3Int(x + 1, y - 1, 0);
-        }
-        Vector3Int[] arr = { self, a, b, c, d, e, f };
-        foreach (Vector3Int coord in arr)
-        {
-            if (PlayFieldLogic.IsTileExists(coord))
+            if (PlayFieldLogic.IsTileExists(item))
             {
-                territory.Add(coord);
+                territory.Add(item);
             }
         }
     }
