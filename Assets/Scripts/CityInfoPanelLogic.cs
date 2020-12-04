@@ -98,13 +98,9 @@ public class CityInfoPanelLogic : MonoBehaviour
             }
             if (isEmpty)
             {
-                // Создаем новый юнит
-                //GameData.unitLayer.SetTile(PlayFieldLogic.selectedCity.Coordinates, GameData.unitHumanTile);
-                //Human newUnit = new Human("NewOne", PlayFieldLogic.selectedCity.Coordinates, GameData.unitHumanTile);
-                //PlayFieldLogic.listOfUnits.Add(newUnit);
-                
-                Player.CreateUnit(Player.selectedCity.Coordinates);
-                Player.selectedCity.totalProductionValue -= Human.costInProductionPoints;
+                // Создаем новый юнит с начальным количество очков действия равным 0
+                Player.CreateUnit(Player.selectedCity.Coordinates, 0);
+                Player.selectedCity.PayProductionCost(Human.costInProductionPoints);
             }
             else
             {

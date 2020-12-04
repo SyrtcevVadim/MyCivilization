@@ -89,7 +89,7 @@ public class Human
     /// <summary>
     /// Стоимость юнита в очках продукции.
     /// </summary>
-    public static double costInProductionPoints;
+    public static int costInProductionPoints = 10;
 
     /// <summary>
     /// Конструктор класса Человек
@@ -108,7 +108,18 @@ public class Human
         toughness = 100;                                                    // 100 очков жизней
         strength = 20;                                                      // 20 очков силы
         armor = 3;                                                          // и 3 очка защиты
-        costInProductionPoints = 10;                                        // Юнит-человек стоит 10 единиц продукции
+    }
+
+    public Human(Vector3Int coordinates, int startAP)
+    {
+        movingGrid = new List<baseLayerTile>();
+        Name = GameData.GetRandomHumanName();
+        Coordinates = coordinates;
+        unitTile = GameData.initialUnitTile;
+        actionPoints = startAP;
+        toughness = 100;
+        strength = 20;
+        armor = 3;
     }
 
     /// <summary>

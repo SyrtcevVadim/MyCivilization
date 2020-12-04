@@ -53,11 +53,24 @@ public class Player
     public static void CreateUnit(Vector3Int coordinates)
     {
         // Создает объект нового юнита
-        Human newUnit = new Human(coordinates);
+        Human createdUnit = new Human(coordinates);
         // Добавляет новый юнит в список юнитов игрока.
-        listOfUnits.Add(newUnit);
+        listOfUnits.Add(createdUnit);
         // Отображает юнит на игровом поле.
-        DisplayUnitOnPlayField(newUnit);
+        DisplayUnitOnPlayField(createdUnit);
+    }
+
+    /// <summary>
+    /// Создает юнит игрока в указанном координатами месте игрового поля. У юнита будет
+    /// количество очков действия, равное значению startAP
+    /// </summary>
+    /// <param name="coordinates">Координаты, в которых появится юнит.</param>
+    /// <param name="startAP">Стартовое количество очков действия для юнита</param>
+    public static void CreateUnit(Vector3Int coordinates, int startAP)
+    {
+        Human createdUnit = new Human(coordinates, startAP);
+        listOfUnits.Add(createdUnit);
+        DisplayUnitOnPlayField(createdUnit);
     }
 
     /// <summary>

@@ -149,4 +149,12 @@ public class City
             totalProductionValue = maxPossibleProductionValue;
         }
     }
+    /// <summary>
+    /// Заплатить очки продукции города.
+    /// </summary>
+    /// <param name="spentProduction">Продукция, которую следует заплатить.</param>
+    public void PayProductionCost(int spentProduction)
+    {
+        totalProductionValue -= spentProduction;
+    }
 }
