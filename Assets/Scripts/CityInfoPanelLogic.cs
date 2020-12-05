@@ -80,7 +80,7 @@ public class CityInfoPanelLogic : MonoBehaviour
     public void OnCreateButtonClick()
     {
         // Если игроку не хватает ресурсов на создание юнита:
-        if (Player.selectedCity.totalProductionValue < Human.costInProductionPoints)
+        if (Player.selectedCity.totalProductionValue < Unit.costInProductionPoints)
         {
             notEnoughProductionForPurchase.SetActive(true);
         }
@@ -89,7 +89,7 @@ public class CityInfoPanelLogic : MonoBehaviour
             notEnoughProductionForPurchase.SetActive(false);
             bool isEmpty = true;
             // не позволяем заказать новый юнит ,если на клетке города стоит какой-то юнит
-            foreach (Human unit in Player.listOfUnits)
+            foreach (Unit unit in Player.listOfUnits)
             {
                 if (Player.selectedCity.Coordinates == unit.Coordinates)
                 {
@@ -100,7 +100,7 @@ public class CityInfoPanelLogic : MonoBehaviour
             {
                 // Создаем новый юнит с начальным количество очков действия равным 0
                 Player.CreateUnit(Player.selectedCity.Coordinates, 0);
-                Player.selectedCity.PayProductionCost(Human.costInProductionPoints);
+                Player.selectedCity.PayProductionCost(Unit.costInProductionPoints);
             }
             else
             {

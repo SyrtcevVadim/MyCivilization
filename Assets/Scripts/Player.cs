@@ -6,7 +6,7 @@ public class Player
     /// <summary>
     /// Список юнитов.
     /// </summary>
-    public static List<Human> listOfUnits;
+    public static List<Unit> listOfUnits;
     /// <summary>
     /// Список городов.
     /// </summary>
@@ -15,7 +15,7 @@ public class Player
     /// <summary>
     /// Выбранный юнит.
     /// </summary>
-    public static Human selectedUnit;
+    public static Unit selectedUnit;
     /// <summary>
     /// Выбранный город.
     /// </summary>
@@ -32,7 +32,7 @@ public class Player
     public static void Init()
     {
         // Выделение памяти на список юнитов.
-        listOfUnits = new List<Human>();
+        listOfUnits = new List<Unit>();
         // Выделение памяти на список городов.
         listOfCities = new List<City>();
 
@@ -53,7 +53,7 @@ public class Player
     public static void CreateUnit(Vector3Int coordinates)
     {
         // Создает объект нового юнита
-        Human createdUnit = new Human(coordinates);
+        Unit createdUnit = new Unit(coordinates);
         // Добавляет новый юнит в список юнитов игрока.
         listOfUnits.Add(createdUnit);
         // Отображает юнит на игровом поле.
@@ -68,7 +68,7 @@ public class Player
     /// <param name="startAP">Стартовое количество очков действия для юнита</param>
     public static void CreateUnit(Vector3Int coordinates, int startAP)
     {
-        Human createdUnit = new Human(coordinates, startAP);
+        Unit createdUnit = new Unit(coordinates, startAP);
         listOfUnits.Add(createdUnit);
         DisplayUnitOnPlayField(createdUnit);
     }
@@ -77,7 +77,7 @@ public class Player
     /// Отрисовывает юнит на игровом поле.
     /// </summary>
     /// <param name="unit">Юнит, который отрисуется на игровом поле.</param>
-    private static void DisplayUnitOnPlayField(Human unit)
+    private static void DisplayUnitOnPlayField(Unit unit)
     {
         GameData.unitLayer.SetTile(unit.Coordinates, unit.unitTile);
     }
@@ -86,7 +86,7 @@ public class Player
     /// Стирает юнит с игрового поля.
     /// </summary>
     /// <param name="unit">Юнит, который будет стёрт с игрового поля.</param>
-    private static void RemoveUnitFromPlayField(Human unit)
+    private static void RemoveUnitFromPlayField(Unit unit)
     {
         GameData.unitLayer.SetTile(unit.Coordinates, null);
     }
@@ -145,7 +145,7 @@ public class Player
     /// Отмечает юнит выбранным.
     /// </summary>
     /// <param name="unit">Выбранный юнит.</param>
-    public static void SelectUnit(Human unit)
+    public static void SelectUnit(Unit unit)
     {
         
         // Проверяем, не выбирается ли данный юнит подряд дважды

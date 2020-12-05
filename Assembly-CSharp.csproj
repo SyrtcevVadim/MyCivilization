@@ -69,7 +69,6 @@
     <Compile Include="Assets\Scripts\CreditsMenuLogic.cs" />
     <Compile Include="Assets\Scripts\Data.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />
-    <Compile Include="Assets\Scripts\Human.cs" />
     <Compile Include="Assets\Scripts\MainMenuLogic.cs" />
     <Compile Include="Assets\Scripts\MenuPanelLogic.cs" />
     <Compile Include="Assets\Scripts\PlayFieldLogic.cs" />
@@ -77,6 +76,7 @@
     <Compile Include="Assets\Scripts\SettingsMenuLogic.cs" />
     <Compile Include="Assets\Scripts\StatusBarLogic.cs" />
     <Compile Include="Assets\Scripts\UILogic.cs" />
+    <Compile Include="Assets\Scripts\Unit.cs" />
     <Compile Include="Assets\Scripts\UnitInfoPanelLogic.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

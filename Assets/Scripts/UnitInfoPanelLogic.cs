@@ -56,7 +56,7 @@ public class UnitInfoPanelLogic : MonoBehaviour
     /// Обновляет информацию в панели информации о выбранном юните
     /// </summary>
     /// <param name="unit">Юнит, информация которого отображается в панели</param>
-    public static void UpdateUnitInfo(Human unit)
+    public static void UpdateUnitInfo(Unit unit)
     {
         unitNameLabel.text = string.Format("Name: {0}", unit.Name);     
         unitClassLabel.text = string.Format("Class: {0}", "Human");        
@@ -65,7 +65,7 @@ public class UnitInfoPanelLogic : MonoBehaviour
         maxPossibleHP.text = unit.maxHP.ToString();
         remainHP.text = unit.remainHP.ToString();
         collectedExperience.text = unit.collectedExperience.ToString();
-        experienceRequiredForNextLevel.text = Human.requiredExperienceForLevel[unit.currentLevel + 1].ToString() ;
+        experienceRequiredForNextLevel.text = Unit.requiredExperienceForLevel[unit.currentLevel + 1].ToString() ;
         unitArmorLabel.text = unit.armor.ToString();                           
         unitInfoPanel.SetActive(true);                                             
     }

@@ -57,7 +57,7 @@ public class PlayFieldLogic : MonoBehaviour
     /// <param name="coordinates"></param>
     private void ProcessClickOnPlayerUnit(Vector3Int coordinates)
     {
-        foreach (Human human in Player.listOfUnits)
+        foreach (Unit human in Player.listOfUnits)
         {
             // Если пользователь щелкнул ЛКМ по юниту, то он его выбирает. 
             if (human.Coordinates == coordinates)

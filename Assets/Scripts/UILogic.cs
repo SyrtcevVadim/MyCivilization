@@ -24,9 +24,9 @@ public class UILogic : MonoBehaviour
     /// Обновляет очки действия у всех юнитов игрока. У каждого юнита устанавливается 2 очка действия.
     /// </summary>
     /// <param name="listOfPlayerUnits">Список юнитов игрока.</param>
-    private void RestorePlayerUnitActionPoints(List<Human> listOfPlayerUnits)
+    private void RestorePlayerUnitActionPoints(List<Unit> listOfPlayerUnits)
     {
-        foreach(Human unit in listOfPlayerUnits)
+        foreach(Unit unit in listOfPlayerUnits)
         {
             unit.RestoreActionPoints();
         }
