@@ -39,7 +39,7 @@ public class PlayFieldLogic : MonoBehaviour
         foreach (City city in Player.listOfCities)
         {
             // Если пользователь нажал на какой-либо из своих городов
-            if (city.Coordinates == coordinates)
+            if (city.GetCoordinates() == coordinates)
             {
                 // Отмечаем данный город как выбранный
                 Player.SelectCity(city);
@@ -60,7 +60,7 @@ public class PlayFieldLogic : MonoBehaviour
         foreach (Unit human in Player.listOfUnits)
         {
             // Если пользователь щелкнул ЛКМ по юниту, то он его выбирает. 
-            if (human.Coordinates == coordinates)
+            if (human.GetCoordinates() == coordinates)
             {
                 Player.SelectUnit(human);
             }
@@ -188,7 +188,7 @@ public class PlayFieldLogic : MonoBehaviour
                     UnitInfoPanelLogic.UpdateUnitInfo(Player.selectedUnit);   // Обновляем информацию о юните в UnitInfoPanel
                     Player.selectedUnit.HideTilesForMoving();  // После движения убираем сетку возможных тайлов для передвижения
                     Player.selectedUnit.SetTilesForMoving();   // Просчитываем новую сетку возможных передвижений
-                    if (Player.selectedUnit.ActionPoints > 0)
+                    if (Player.selectedUnit.HasAP())
                     {
                         Player.selectedUnit.ShowTilesForMoving();  // Вновь отрисовываем сетку возможных тайлов для перемещения
                     }

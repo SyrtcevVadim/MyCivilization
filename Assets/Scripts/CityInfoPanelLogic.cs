@@ -91,7 +91,7 @@ public class CityInfoPanelLogic : MonoBehaviour
             // не позволяем заказать новый юнит ,если на клетке города стоит какой-то юнит
             foreach (Unit unit in Player.listOfUnits)
             {
-                if (Player.selectedCity.Coordinates == unit.Coordinates)
+                if (Player.selectedCity.GetCoordinates() == unit.GetCoordinates())
                 {
                     isEmpty = false;
                 }
@@ -99,7 +99,7 @@ public class CityInfoPanelLogic : MonoBehaviour
             if (isEmpty)
             {
                 // Создаем новый юнит с начальным количество очков действия равным 0
-                Player.CreateUnit(Player.selectedCity.Coordinates, 0);
+                Player.CreateUnit(Player.selectedCity.GetCoordinates(), 0);
                 Player.selectedCity.PayProductionCost(Unit.costInProductionPoints);
             }
             else

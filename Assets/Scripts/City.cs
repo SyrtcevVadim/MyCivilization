@@ -14,20 +14,6 @@ public class City
     /// </summary>
     private Vector3Int coordinates;
 
-    /// <summary>
-    /// Координаты города
-    /// </summary>
-    public Vector3Int Coordinates
-    {
-        get
-        {
-            return coordinates;
-        }
-        set
-        {
-            coordinates = value;
-        }
-    }
 
     /// <summary>
     /// Тайл, представляющий город на карте
@@ -116,9 +102,9 @@ public class City
     public void SetTerritory()
     {
         // Ячейка с самим городом тоже принадлежит территории города
-        territory.Add(Coordinates);
+        territory.Add(coordinates);
         // Получаем массив координат соседних для данной ячеек
-        Vector3Int[] neighbourTilesCoordinates = PlayFieldLogic.GetListOfNeighbourTiles(Coordinates);
+        Vector3Int[] neighbourTilesCoordinates = PlayFieldLogic.GetListOfNeighbourTiles(coordinates);
         foreach (Vector3Int item in neighbourTilesCoordinates)
         {
             if (PlayFieldLogic.IsTileExists(item))
@@ -156,5 +142,31 @@ public class City
     public void PayProductionCost(int spentProduction)
     {
         totalProductionValue -= spentProduction;
+    }
+
+    /// <summary>
+    /// Отображает город на игровом поле.
+    /// </summary>
+    /// <param name="city">Город, который будет отображен на игровом поле.</param>
+    public void DisplayCityOnPlayField()
+    {
+        GameData.cityLayer.SetTile(coordinates, cityTile);
+        SetTerritory();
+        ShowTerritory();
+    }
+
+    /// <summary>
+    /// Стирает город с игрового поля.
+    /// </summary>
+    /// <param name="city">Город, который будет стерт с игрового поля.</param>
+    public void RemoveCityFromPlayField()
+    {
+        GameData.cityLayer.SetTile(coordinates, null);
+    }
+
+
+    public Vector3Int GetCoordinates()
+    {
+        return coordinates;
     }
 }

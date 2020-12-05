@@ -21,108 +21,96 @@ public class baseLayerTile
         this.requiresAP = requiresAP;
     }
 }
-
+/// <summary>
+/// Базовый класс для всех юнитов в игре.
+/// </summary>
 public class Unit
 {
-
     
-
-    /// <summary>
-    /// Очки действия юнита
-    /// </summary>
-    public int ActionPoints
-    {
-        get
-        {
-            return actionPoints;
-        }
-        set
-        {
-            actionPoints = value;
-        }
-    }
-
     /// <summary>
     /// Координаты ячейки юнита на игровом поле.
     /// </summary>
-    private Vector3Int coordinates;
-    /// <summary>
-    /// Координаты ячейки юнита на игровом поле.
-    /// </summary>
-    public Vector3Int Coordinates
-    {
-        get
-        {
-            return coordinates;
-        }
-        set
-        {
-            coordinates = value;
-        }
-    }
+    protected Vector3Int coordinates;
 
     /// <summary>
     /// Тайл, представляющий юнита на игровом поле.
     /// </summary>
-    public  Tile unitTile;
+    protected  Tile unitTile;
 
     // TODO переделать под индексатор. Опасно: выход за границы массива при получении максимального уровня!!
     /// <summary>
     /// Массив, содержащий необходимое количество опыта для получения каждого уровня. Номер уровня совпадает с индексом в данном массиве.
     /// </summary>
-    public static int[] requiredExperienceForLevel = new int[] { 0, 5, 10, 15 };
+    public static int[] experienceRequiredForLevel = new int[] { 0, 5, 10, 15 };
 
     // Характеристики юнита
     /// <summary>
     /// Имя юнита
     /// </summary>
-    public string Name { get; set; }
-
-    public string Class { get; set; }
+    protected string Name { get; set; }
+    /// <summary>
+    /// Специализация юнита
+    /// </summary>
+    protected string Specialization { get; set; }
 
     /// <summary>
     /// Очки действия юнита
     /// </summary>
-    private int actionPoints;
-
+    protected int currentAP;
+    /// <summary>
+    /// Очки действия юнита
+    /// </summary>
+    protected int ActionPoints
+    {
+        get
+        {
+            return currentAP;
+        }
+        set
+        {
+            currentAP = value;
+        }
+    }
     /// <summary>
     /// Максимально вомзожное количество очков действий юнита.
     /// </summary>
-    private int maxActionPoints;
+    protected int maxAP;
+
 
     /// <summary>
     /// Уровень юнита
     /// </summary>
-    public uint currentLevel;
+    protected int currentLevel;
+    /// <summary>
+    /// Количество очков опыта юнита.
+    /// </summary>
+    protected int collectedExperience;
 
     /// <summary>
     /// Максимально возможное количество очков здоровью у юнита.
     /// </summary>
-    public uint maxHP;
+    protected int maxHP;
     /// <summary>
     /// Текущее количество очков здоровья юнита.
     /// </summary>
-    public uint remainHP;
+    protected int currentHP;
 
-    /// <summary>
-    /// Количество очков опыта юнита.
-    /// </summary>
-    public uint collectedExperience;
 
     /// <summary>
     /// Ударная мощь юнита
     /// </summary>
-    public uint strength;
+    protected int strength;
     /// <summary>
     /// Бронированность юнита
     /// </summary>
-    public uint armor;
+    protected int armor;
 
 
     /// <summary>
     /// Стоимость юнита в очках продукции.
     /// </summary>
     public static int costInProductionPoints = 10;
+
 
     /// <summary>
     /// Конструктор класса юнит
@@ -132,31 +120,31 @@ public class Unit
     /// <param name="unitTile">Tile, которым представлен спрайт юнита</param>
     public Unit(Vector3Int coordinates)
     {
-        movingGrid = new List<baseLayerTile>();                             // Выделяем память под сетку перемещения
+        movingGrid = new List<baseLayerTile>(); // Выделяем память под сетку перемещения
 
-        Name = GameData.GetRandomHumanName();                               // Получаем случайное имя для юнита
-        Coordinates = coordinates;                                          // Позиционируем его на карте
+        Name = GameData.GetRandomHumanName();   // Получаем случайное имя для юнита
+        this.coordinates = coordinates;         // Позиционируем его на карте
         unitTile = GameData.initialUnitTile;
-        maxActionPoints = 2;
-        actionPoints = maxActionPoints;                                     // У человека изначально 2 очка действия
-        maxHP = 100;                                                        // 100 очков жизней
-        remainHP = maxHP;                                                   // Изначально у юнита максимальное количество очков здоровья
-        collectedExperience = 0;                                              // При создании у юнита нет очков опыта
+        maxAP = 2;
+        currentAP = maxAP;                      // У человека изначально 2 очка действия
+        maxHP = 100;                            // 100 очков жизней
+        currentHP = maxHP;                      // Изначально у юнита максимальное количество очков здоровья
+        collectedExperience = 0;                // При создании у юнита нет очков опыта
         currentLevel = 0;                                                   
-        strength = 20;                                                      // 20 очков силы
-        armor = 3;                                                          // и 3 очка защиты
+        strength = 20;                          // 20 очков силы
+        armor = 3;                              // и 3 очка защиты
     }
 
     public Unit(Vector3Int coordinates, int startAP)
     {
         movingGrid = new List<baseLayerTile>();
         Name = GameData.GetRandomHumanName();
-        Coordinates = coordinates;
+        this.coordinates = coordinates;
         unitTile = GameData.initialUnitTile;
-        actionPoints = startAP;
-        maxActionPoints = 2;
+        currentAP = startAP;
+        maxAP = 2;
         maxHP = 100;
-        remainHP = maxHP;
+        currentHP = maxHP;
         collectedExperience = 0;
         currentLevel = 0;
         strength = 20;
@@ -214,7 +202,7 @@ public class Unit
     public void SetTilesForMoving()
     {
         movingGrid.Clear();
-        AddNeighbourTilesToMovingGrid(Coordinates, actionPoints, 0);
+        AddNeighbourTilesToMovingGrid(coordinates, currentAP, 0);
         // Запрещаем юнитам ходить в ячейки, в которых уже стоят союзные юниты.
         foreach(Unit unit in Player.listOfUnits)
         {
@@ -274,13 +262,13 @@ public class Unit
     /// Перемещает юнит в ячейку с координатами destination.
     /// </summary>
     /// <param name="destination">Координаты ячейки, в которую юнит перемещается.</param>
-    public void Move(Vector3Int coordinates)
+    public void Move(Vector3Int newCoordinates)
     {
         
-        GameData.unitLayer.SetTile(Coordinates, null);                      // Удаляем тайл юнита со старой позиции
-        GameData.unitLayer.SetTile(coordinates, unitTile);  // Отрисовываем тайл юнита на новой позиции
-        Coordinates = coordinates;                          // Сохраняем новые координаты юнита
-        actionPoints -= movingGrid.Find(x => x.coordinates == coordinates).requiresAP ;// Уменьшаем количество очков действий на 1
+        GameData.unitLayer.SetTile(coordinates, null);                      // Удаляем тайл юнита со старой позиции
+        GameData.unitLayer.SetTile(newCoordinates, unitTile);  // Отрисовываем тайл юнита на новой позиции
+        coordinates = newCoordinates;                          // Сохраняем новые координаты юнита
+        currentAP -= movingGrid.Find(x => x.coordinates == coordinates).requiresAP ;// Уменьшаем количество очков действий на 1
     }
     
     
@@ -288,8 +276,92 @@ public class Unit
     /// <summary>
     /// Восстанавливает юниту очки действий.
     /// </summary>
-    public void RestoreActionPoints()
+    public void RestoreUnitAP()
     {
-        actionPoints = maxActionPoints;
+        currentAP = maxAP;
+    }
+
+    
+
+    /// <summary>
+    /// Отрисовывает юнит на игровом поле.
+    /// </summary>
+    /// <param name="unit">Юнит, который отрисуется на игровом поле.</param>
+    public void DisplayUnitOnPlayField()
+    {
+        GameData.unitLayer.SetTile(coordinates, unitTile);
+    }
+
+    /// <summary>
+    /// Стирает юнит с игрового поля.
+    /// </summary>
+    /// <param name="unit">Юнит, который будет стёрт с игрового поля.</param>
+    public void RemoveUnitFromPlayField()
+    {
+        GameData.unitLayer.SetTile(coordinates, null);
+    }
+
+    public Vector3Int GetCoordinates()
+    {
+        return coordinates;
+    }
+    public string GetName()
+    {
+        return Name;
+    }
+
+    public int GetCurrentHP()
+    {
+        return currentHP;
+    }
+    public int GetMaxHP()
+    {
+        return maxHP;
+    }
+    /// <returns>Озвращает количество текущих очков действий юнита.</returns>
+    public int GetCurrentAP()
+    {
+        return currentAP;
+    }
+
+    public int GetCollectedExperience()
+    {
+        return collectedExperience;
+    }
+    public int GetExperienceRequiredForNextLevel()
+    {
+        return experienceRequiredForLevel[currentLevel+1];
+    }
+    public int GetStrength()
+    {
+        return strength;
+    }
+    public int GetArmor()
+    {
+        return armor;
+    }
+    /// <summary>
+    /// Проверяет, остались ли у юнита очки действий.
+    /// </summary>
+    /// <returns>true, если у юнита остались очки действия. Иначе - false.</returns>
+    public bool HasAP()
+    {
+        if (currentAP > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public Tile GetTile()
+    {
+        return unitTile;
+    }
+    public void SetTile(Tile newTile)
+    {
+        unitTile = newTile;
     }
 }

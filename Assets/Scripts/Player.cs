@@ -57,7 +57,7 @@ public class Player
         // Добавляет новый юнит в список юнитов игрока.
         listOfUnits.Add(createdUnit);
         // Отображает юнит на игровом поле.
-        DisplayUnitOnPlayField(createdUnit);
+        createdUnit.DisplayUnitOnPlayField();
     }
 
     /// <summary>
@@ -70,27 +70,8 @@ public class Player
     {
         Unit createdUnit = new Unit(coordinates, startAP);
         listOfUnits.Add(createdUnit);
-        DisplayUnitOnPlayField(createdUnit);
+        createdUnit.DisplayUnitOnPlayField();
     }
-
-    /// <summary>
-    /// Отрисовывает юнит на игровом поле.
-    /// </summary>
-    /// <param name="unit">Юнит, который отрисуется на игровом поле.</param>
-    private static void DisplayUnitOnPlayField(Unit unit)
-    {
-        GameData.unitLayer.SetTile(unit.Coordinates, unit.unitTile);
-    }
-
-    /// <summary>
-    /// Стирает юнит с игрового поля.
-    /// </summary>
-    /// <param name="unit">Юнит, который будет стёрт с игрового поля.</param>
-    private static void RemoveUnitFromPlayField(Unit unit)
-    {
-        GameData.unitLayer.SetTile(unit.Coordinates, null);
-    }
-
 
     /// <summary>
     /// Создает город игрока в указанном координатами месте игрового поля.
@@ -100,29 +81,9 @@ public class Player
     /// <param name="isCapital">Является ли город столицей</param>
     public static void CreateCity(Vector3Int coordinates,string name,bool isCapital = false)
     {
-        City newCity = new City(name, coordinates, isCapital);
-        listOfCities.Add(newCity);
-        DisplayCityOnPlayField(newCity);
-    }
-
-    /// <summary>
-    /// Отображает город на игровом поле.
-    /// </summary>
-    /// <param name="city">Город, который будет отображен на игровом поле.</param>
-    private static void DisplayCityOnPlayField(City city)
-    {
-        GameData.cityLayer.SetTile(city.Coordinates, city.cityTile);
-        city.SetTerritory();
-        city.ShowTerritory();
-    }
-
-    /// <summary>
-    /// Стирает город с игрового поля.
-    /// </summary>
-    /// <param name="city">Город, который будет стерт с игрового поля.</param>
-    private static void RemoveCityFromPlayField(City city)
-    {
-        GameData.cityLayer.SetTile(city.Coordinates, null);
+        City createdCity = new City(name, coordinates, isCapital);
+        listOfCities.Add(createdCity);
+        createdCity.DisplayCityOnPlayField();
     }
 
     /// <summary>
@@ -165,11 +126,11 @@ public class Player
             // Обозначаем данный юнит как выбранный
             selectedUnit = unit;
             //Меняем цвет выбранного юнита на градиентный желтый
-            selectedUnit.unitTile = GameData.selectedUnitTile;
-            GameData.unitLayer.SetTile(selectedUnit.Coordinates, selectedUnit.unitTile);
+            selectedUnit.SetTile(GameData.selectedUnitTile);
+            GameData.unitLayer.SetTile(selectedUnit.GetCoordinates(), selectedUnit.GetTile());
 
             UnitInfoPanelLogic.UpdateUnitInfo(selectedUnit);
-            if(selectedUnit.ActionPoints > 0)
+            if(selectedUnit.HasAP())
             {
                 selectedUnit.SetTilesForMoving();
                 selectedUnit.ShowTilesForMoving();
@@ -185,8 +146,8 @@ public class Player
     {
         selectedUnit.HideTilesForMoving();
         // Снимаем с юнита выделение, возвращая ему его основной цвет
-        selectedUnit.unitTile = GameData.initialUnitTile;
-        GameData.unitLayer.SetTile(selectedUnit.Coordinates, selectedUnit.unitTile);
+        selectedUnit.SetTile(GameData.initialUnitTile);
+        GameData.unitLayer.SetTile(selectedUnit.GetCoordinates(), selectedUnit.GetTile());
 
         selectedUnit = null;
         UnitInfoPanelLogic.unitInfoPanel.SetActive(false);

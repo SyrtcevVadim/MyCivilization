@@ -28,7 +28,7 @@ public class UILogic : MonoBehaviour
     {
         foreach(Unit unit in listOfPlayerUnits)
         {
-            unit.RestoreActionPoints();
+            unit.RestoreUnitAP();
         }
     }
 

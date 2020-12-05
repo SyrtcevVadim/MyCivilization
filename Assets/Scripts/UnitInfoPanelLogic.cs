@@ -52,21 +52,22 @@ public class UnitInfoPanelLogic : MonoBehaviour
         unitInfoPanel = GameObject.Find("UnitInfoPanel");
         unitInfoPanel.SetActive(false);
     }
+
     /// <summary>
     /// Обновляет информацию в панели информации о выбранном юните
     /// </summary>
     /// <param name="unit">Юнит, информация которого отображается в панели</param>
     public static void UpdateUnitInfo(Unit unit)
     {
-        unitNameLabel.text = string.Format("Name: {0}", unit.Name);     
+        unitNameLabel.text = string.Format("Name: {0}", unit.GetName());     
         unitClassLabel.text = string.Format("Class: {0}", "Human");        
-        unitActionPointLabel.text = unit.ActionPoints.ToString();               
-        unitStrengthLabel.text = unit.strength.ToString();                     
-        maxPossibleHP.text = unit.maxHP.ToString();
-        remainHP.text = unit.remainHP.ToString();
-        collectedExperience.text = unit.collectedExperience.ToString();
-        experienceRequiredForNextLevel.text = Unit.requiredExperienceForLevel[unit.currentLevel + 1].ToString() ;
-        unitArmorLabel.text = unit.armor.ToString();                           
+        unitActionPointLabel.text = unit.GetCurrentAP().ToString();               
+        unitStrengthLabel.text = unit.GetStrength().ToString();                     
+        maxPossibleHP.text = unit.GetMaxHP().ToString();
+        remainHP.text = unit.GetCurrentHP().ToString() ;
+        collectedExperience.text = unit.GetCollectedExperience().ToString();
+        experienceRequiredForNextLevel.text = unit.GetExperienceRequiredForNextLevel().ToString();
+        unitArmorLabel.text = unit.GetArmor().ToString();                           
         unitInfoPanel.SetActive(true);                                             
     }
 
