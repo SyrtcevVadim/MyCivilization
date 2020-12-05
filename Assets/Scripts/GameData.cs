@@ -65,11 +65,12 @@ public class GameData:MonoBehaviour
     /// </summary>
     public static string[] tilesRequired2AP = { "DeciduousForest1Glade",  "DeciduousForest2Glade", "SpruceForest1Glade", "SpruceForest2Glade",
 "DeciduousForest1Dirt","DeciduousForest2Dirt","SpruceForest1Dirt","SpruceForest2Dirt", "SandstoneDirt","SandstoneGlade","Stone1Dirt","Stone1Glade","Stone2Dirt",
-"Forest1Mars","Forest2Mars","Stone1Mars","Stone2Mars", "Stone3Mars","StoneCrystalMars"};
+"Forest1Mars","Forest2Mars","Stone1Mars","Stone2Mars", "Stone3Mars","StoneCrystalMars","Cactus1Desert","Cactus2Desert","Cactus3Desert",
+"Cactus4Desert","Stone1Desert","Stone2Desert","Stone3Desert"};
     /// <summary>
     /// Список имен тайлов, которые трубуют 1 очко действия для передвижения в них
     /// </summary>
-    public static string[] tilesRequired1AP = { "Glade", "Dirt","Mars","CrystalsMars" };
+    public static string[] tilesRequired1AP = { "Glade", "Dirt","Mars","CrystalsMars","Desert"};
 
     /// <summary>
     /// Список возможных имен для юнитов в игре.
