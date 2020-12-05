@@ -17,7 +17,7 @@ public class GameData:MonoBehaviour
     /// <summary>
     /// Слой ландшафта игрового поля
     /// </summary>
-    public static Tilemap baseLayer;
+    public static Tilemap terrainLayer;
     /// <summary>
     /// Слой городов игрового поля
     /// </summary>
@@ -64,11 +64,12 @@ public class GameData:MonoBehaviour
     /// Список имен тайлов, которые требуют 2 очка действия для передвижения в них
     /// </summary>
     public static string[] tilesRequired2AP = { "DeciduousForest1Glade",  "DeciduousForest2Glade", "SpruceForest1Glade", "SpruceForest2Glade",
-"DeciduousForest1Dirt","DeciduousForest2Dirt","SpruceForest1Dirt","SpruceForest2Dirt", "SandstoneDirt","SandstoneGlade","Stone1Dirt","Stone1Glade","Stone2Dirt"};
+"DeciduousForest1Dirt","DeciduousForest2Dirt","SpruceForest1Dirt","SpruceForest2Dirt", "SandstoneDirt","SandstoneGlade","Stone1Dirt","Stone1Glade","Stone2Dirt",
+"Forest1Mars","Forest2Mars","Stone1Mars","Stone2Mars", "Stone3Mars","StoneCrystalMars"};
     /// <summary>
     /// Список имен тайлов, которые трубуют 1 очко действия для передвижения в них
     /// </summary>
-    public static string[] tilesRequired1AP = { "Glade", "Dirt" };
+    public static string[] tilesRequired1AP = { "Glade", "Dirt","Mars","CrystalsMars" };
 
     /// <summary>
     /// Список возможных имен для юнитов в игре.
@@ -88,7 +89,7 @@ public class GameData:MonoBehaviour
     {
         psevdoRandomNumberGenerator = new System.Random();
         // Получаем все слои игрового поля
-        baseLayer = GameObject.Find("BaseLayer").GetComponent<Tilemap>();           // Получаем слой ландшафта
+        terrainLayer = GameObject.Find("TerrainLayer").GetComponent<Tilemap>();     // Получаем слой ландшафта
         cityLayer = GameObject.Find("CityLayer").GetComponent<Tilemap>();           // Получаем слой городов
         unitLayer = GameObject.Find("UnitLayer").GetComponent<Tilemap>();           // Получаем слой юнитов
         territoryLayer = GameObject.Find("TerritoryLayer").GetComponent<Tilemap>(); // Получаем слой территории

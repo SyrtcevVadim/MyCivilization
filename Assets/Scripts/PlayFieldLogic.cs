@@ -74,7 +74,7 @@ public class PlayFieldLogic : MonoBehaviour
     /// <returns>Если клетка существует, true. Иначе - false</returns>
     public static bool IsTileExists(Vector3Int tileCoordinates)
     {
-        if (GameData.baseLayer.GetTile(tileCoordinates) != null)
+        if (GameData.terrainLayer.GetTile(tileCoordinates) != null)
         {
             return true;
         }
@@ -91,7 +91,7 @@ public class PlayFieldLogic : MonoBehaviour
     /// <returns>Количество очков действия, которые требуются для перемещения в данную ячейку</returns>
     public static int GetTileAPRequirments(Vector3Int coordinates)
     {
-        Tile tile = (Tile)GameData.baseLayer.GetTile(coordinates);
+        Tile tile = (Tile)GameData.terrainLayer.GetTile(coordinates);
         if (tile == null)
         {
             return -1;
@@ -168,7 +168,7 @@ public class PlayFieldLogic : MonoBehaviour
                 // Получаем координаты точки в пространстве, в которую пользователь кликнул
                 Vector3 clickedWorldCoordinates = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 // Конвертируем позицию этой точки в координаты ячейки, в которой она содержится
-                Vector3Int clickedTileCoordinates = GameData.baseLayer.WorldToCell(clickedWorldCoordinates);
+                Vector3Int clickedTileCoordinates = GameData.terrainLayer.WorldToCell(clickedWorldCoordinates);
                 // Проверяем, кликнул ли пользователь ЛКМ по одному из своих городов:
                 ProcessClickOnPlayerCity(clickedTileCoordinates);
                 // Проверяем, кликнул ли пользователь ЛКМ по одному из своих юнитов:
@@ -179,7 +179,7 @@ public class PlayFieldLogic : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 Vector3 clickedWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector3Int destination = GameData.baseLayer.WorldToCell(clickedWorldPosition);
+                Vector3Int destination = GameData.terrainLayer.WorldToCell(clickedWorldPosition);
 
                 if (Player.selectedUnit != null && Player.selectedUnit.IsMovingPossible(destination))
                 {
