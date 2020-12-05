@@ -41,10 +41,14 @@ public class PlayFieldLogic : MonoBehaviour
             // Если пользователь нажал на какой-либо из своих городов
             if (city.GetCoordinates() == coordinates)
             {
-                // Отмечаем данный город как выбранный
-                Player.SelectCity(city);
-                // Перемещаем к выбранному городу камеру.
-                MoveCameraToPoint(coordinates);
+                // Если данный город уже выбран, ничего не делаем
+                if(Player.selectedCity != city)
+                {
+                    // Отмечаем данный город как выбранный
+                    Player.SelectCity(city);
+                    // Перемещаем к выбранному городу камеру.
+                    MoveCameraToPoint(coordinates);
+                }
                 
             }
         }
