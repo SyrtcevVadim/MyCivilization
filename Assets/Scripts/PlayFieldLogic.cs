@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayFieldLogic : MonoBehaviour
 {
+    Vector3Int selectedTileCoordinates;
     
     private void Awake()
     {
@@ -155,8 +156,25 @@ public class PlayFieldLogic : MonoBehaviour
 
     private void Update()
     {
+        // Получаем координаты точки в пространстве, в которую пользователь кликнул
+        Vector3 clickedWorldCoordinates = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // Конвертируем позицию этой точки в координаты ячейки, в которой она содержится
+        Vector3Int clickedTileCoordinates = GameData.terrainLayer.WorldToCell(clickedWorldCoordinates);
+        if(IsTileExists(clickedTileCoordinates))
+        {
+            if(selectedTileCoordinates == null)
+            {
+                GameData.selectTileLayer.SetTile(clickedTileCoordinates, GameData.selectedTile);
+            }
+            else
+            {
+                GameData.selectTileLayer.SetTile(selectedTileCoordinates, null);
+                selectedTileCoordinates = clickedTileCoordinates;
+                GameData.selectTileLayer.SetTile(clickedTileCoordinates, GameData.selectedTile);
+            }
+        }
         // По нажатию клавиши Esc открывается внутриигровое меню
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             MenuPanelLogic.IsMenuPanelActive = true;
             MenuPanelLogic.menuBackground.SetActive(true);
@@ -169,10 +187,6 @@ public class PlayFieldLogic : MonoBehaviour
             // С помощью левой кнопки мыши пользователь может выбрать юнита для передвижения
             if (Input.GetMouseButtonDown(0))
             {
-                // Получаем координаты точки в пространстве, в которую пользователь кликнул
-                Vector3 clickedWorldCoordinates = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                // Конвертируем позицию этой точки в координаты ячейки, в которой она содержится
-                Vector3Int clickedTileCoordinates = GameData.terrainLayer.WorldToCell(clickedWorldCoordinates);
                 // Проверяем, кликнул ли пользователь ЛКМ по одному из своих городов:
                 ProcessClickOnPlayerCity(clickedTileCoordinates);
                 // Проверяем, кликнул ли пользователь ЛКМ по одному из своих юнитов:
@@ -182,13 +196,10 @@ public class PlayFieldLogic : MonoBehaviour
             // С помощью правой кнопки мыши юнитов можно будет передвигать
             if (Input.GetMouseButtonDown(1))
             {
-                Vector3 clickedWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector3Int destination = GameData.terrainLayer.WorldToCell(clickedWorldPosition);
-
-                if (Player.selectedUnit != null && Player.selectedUnit.IsMovingPossible(destination))
+                if (Player.selectedUnit != null && Player.selectedUnit.IsMovingPossible(clickedTileCoordinates))
                 {
                     // Если юнит выбран и движение в выбранную клетку возможно, производим перемещение юнита
-                    Player.selectedUnit.Move(destination);     // Производим перемещение юнита в указанную клетку
+                    Player.selectedUnit.Move(clickedTileCoordinates);     // Производим перемещение юнита в указанную клетку
                     UnitInfoPanelLogic.UpdateUnitInfo(Player.selectedUnit);   // Обновляем информацию о юните в UnitInfoPanel
                     Player.selectedUnit.HideTilesForMoving();  // После движения убираем сетку возможных тайлов для передвижения
                     Player.selectedUnit.SetTilesForMoving();   // Просчитываем новую сетку возможных передвижений

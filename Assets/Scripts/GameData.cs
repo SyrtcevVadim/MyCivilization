@@ -34,6 +34,10 @@ public class GameData:MonoBehaviour
     /// Слой для отображения клеток возможных ходов юнита на игровом поле
     /// </summary>
     public static Tilemap movementLayer;
+    /// <summary>
+    /// 
+    /// </summary>
+    public static Tilemap selectTileLayer;
 
     /// <summary>
     /// Тайл города-столицы
@@ -59,6 +63,8 @@ public class GameData:MonoBehaviour
     /// Тайл выбранного юнита-человека.
     /// </summary>
     public static Tile selectedUnitTile;
+
+    public static Tile selectedTile;
 
     /// <summary>
     /// Список имен тайлов, которые требуют 2 очка действия для передвижения в них
@@ -95,7 +101,7 @@ public class GameData:MonoBehaviour
         unitLayer = GameObject.Find("UnitLayer").GetComponent<Tilemap>();           // Получаем слой юнитов
         territoryLayer = GameObject.Find("TerritoryLayer").GetComponent<Tilemap>(); // Получаем слой территории
         movementLayer = GameObject.Find("MovementLayer").GetComponent<Tilemap>();   // Получаем слой возможных передвижений юнита
-
+        selectTileLayer = GameObject.Find("SelectTileLayer").GetComponent<Tilemap>();
         // Получаем все возможные тайлы
         capitalCityTile = Resources.Load<Tile>(@"Palettes\CityLayerPalette\CapitalCity");       // Получаем тайл города-столицы
         provincialCityTile = Resources.Load<Tile>(@"Palettes\CityLayerPalette\ProvincialCity"); // Получаем тайл города-провинции
@@ -103,6 +109,6 @@ public class GameData:MonoBehaviour
         selectedUnitTile = Resources.Load<Tile>(@"Palettes\UnitLayerPalette\SelectedUnit");
         territoryTile = Resources.Load<Tile>(@"Palettes\TerritoryLayerPalette\TerritoryTile");  // Получаем тайл территории
         tileForMovingIn = Resources.Load<Tile>(@"Palettes\MovementLayerPalette\TileForMovingIn");   // Получаем тайл для отображения клеток для возможного перемещения
-
+        selectedTile = Resources.Load<Tile>(@"Palettes\SelectTilePalette\SelectedTile");
     }
 }
