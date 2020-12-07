@@ -41,7 +41,7 @@ public class Unit
     /// <summary>
     /// Массив, содержащий необходимое количество опыта для получения каждого уровня. Номер уровня совпадает с индексом в данном массиве.
     /// </summary>
-    public static int[] experienceRequiredForLevel = new int[] { 0, 5, 10, 15 };
+    protected static int[] experienceRequiredForLevel = new int[] { 0, 5, 10, 15 };
 
     // Характеристики юнита
     /// <summary>
@@ -301,6 +301,13 @@ public class Unit
     public string GetName()
     {
         return Name;
+    }
+
+
+    /// <returns>Специализация юнита.</returns>
+    public string GetSpecialization()
+    {
+        return Specialization;
     }
 
     /// <returns>Текущее значение очков жизней.</returns>

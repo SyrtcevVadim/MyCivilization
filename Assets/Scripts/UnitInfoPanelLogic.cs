@@ -60,7 +60,7 @@ public class UnitInfoPanelLogic : MonoBehaviour
     public static void UpdateUnitInfo(Unit unit)
     {
         unitNameLabel.text = string.Format("Name: {0}", unit.GetName());     
-        unitClassLabel.text = string.Format("Class: {0}", "Human");        
+        unitClassLabel.text = string.Format("Class: {0}", unit.GetSpecialization());        
         unitActionPointLabel.text = unit.GetCurrentAP().ToString();               
         unitStrengthLabel.text = unit.GetStrength().ToString();                     
         maxPossibleHP.text = unit.GetMaxHP().ToString();

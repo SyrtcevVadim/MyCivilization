@@ -46,31 +46,61 @@ public class Player
     }
 
     /// <summary>
-    /// Создает юнит игрока в указанном координатами месте игрового поля.
+    /// 
     /// </summary>
-    /// <param name="coordinates">Координаты местоположения юнита</param>
-    public static void CreateUnit(Vector3Int coordinates)
+    /// <param name="coordinates"></param>
+    public static void CreateWorker(Vector3Int coordinates)
     {
         // Создает объект нового юнита
-        Unit createdUnit = new Unit(coordinates);
+        Worker createdUnit = new Worker(coordinates);
         // Добавляет новый юнит в список юнитов игрока.
         listOfUnits.Add(createdUnit);
         // Отображает юнит на игровом поле.
         createdUnit.DisplayUnitOnPlayField();
     }
-
     /// <summary>
-    /// Создает юнит игрока в указанном координатами месте игрового поля. Начальное количество
-    /// очков действия юнита равняется startAP.
+    /// 
     /// </summary>
-    /// <param name="coordinates">Координаты, в которых появится юнит.</param>
-    /// <param name="startAP">Стартовое количество очков действия юнита</param>
-    public static void CreateUnit(Vector3Int coordinates, int startAP)
+    /// <param name="coordinates"></param>
+    /// <param name="startAP"></param>
+    public static void CreateWorker(Vector3Int coordinates, int startAP)
     {
-        Unit createdUnit = new Unit(coordinates, startAP);
+        // Создает объект нового юнита
+        Worker createdUnit = new Worker(coordinates, startAP);
+        // Добавляет новый юнит в список юнитов игрока.
         listOfUnits.Add(createdUnit);
+        // Отображает юнит на игровом поле.
         createdUnit.DisplayUnitOnPlayField();
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="coordinates"></param>
+    public static void CreateWarrior(Vector3Int coordinates)
+    {
+        // Создает объект нового юнита
+        Warrior createdUnit = new Warrior(coordinates);
+        // Добавляет новый юнит в список юнитов игрока.
+        listOfUnits.Add(createdUnit);
+        // Отображает юнит на игровом поле.
+        createdUnit.DisplayUnitOnPlayField();
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="coordinates"></param>
+    /// <param name="startAP"></param>
+    public static void CreateWarrior(Vector3Int coordinates, int startAP)
+    {
+        // Создает объект нового юнита
+        Warrior createdUnit = new Warrior(coordinates, startAP);
+        // Добавляет новый юнит в список юнитов игрока.
+        listOfUnits.Add(createdUnit);
+        // Отображает юнит на игровом поле.
+        createdUnit.DisplayUnitOnPlayField();
+
+    }
+
 
     /// <summary>
     /// Создает город игрока в указанном координатами месте игрового поля.
@@ -182,9 +212,9 @@ public class Player
         CreateCity(new Vector3Int(-1, -3, 0), "Kursk");
 
         // Создаем трех юнитов
-        CreateUnit(new Vector3Int(2, 3, 0));
-        CreateUnit(new Vector3Int(-2, 2, 0));
-        CreateUnit(new Vector3Int(0, -2, 0));
+        CreateWorker(new Vector3Int(2, 3, 0));
+        CreateWarrior(new Vector3Int(-2, 2, 0));
+        CreateWorker(new Vector3Int(0, -2, 0));
         UpdatePlayerData();
     }
 }

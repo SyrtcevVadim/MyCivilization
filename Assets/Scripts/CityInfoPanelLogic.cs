@@ -34,10 +34,16 @@ public class CityInfoPanelLogic : MonoBehaviour
     /// Метка для отображения прироста науки в ход
     /// </summary>
     static Text scienceGrowthLabel;
+
     /// <summary>
     /// TODO
     /// </summary>
     static GameObject notEnoughProductionForPurchase;
+
+    /// <summary>
+    /// TODO
+    /// </summary>
+    static GameObject notEnoughGoldForPurchase;
 
     /// <summary>
     /// Метка для обозначения текущей накопленной продукции в городе
@@ -52,9 +58,12 @@ public class CityInfoPanelLogic : MonoBehaviour
         goldGrowthLabel = GameObject.Find("GoldGrowthLabel").GetComponent<Text>();
         scienceGrowthLabel = GameObject.Find("CityScienceGrowthLabel").GetComponent<Text>();
         totalProductionValueLabel = GameObject.Find("TotalProductionValueLabel").GetComponent<Text>();
-        notEnoughProductionForPurchase = GameObject.Find("NotEnoughProductionForPurchase");
-        notEnoughProductionForPurchase.SetActive(false);
+        //notEnoughProductionForPurchase = GameObject.Find("NotEnoughProductionForPurchase");
+        //notEnoughProductionForPurchase.SetActive(false);
         cityInfoPanel = GameObject.Find("CityInfoPanel");
+
+        GameObject.Find("WorkerInfoLabel").GetComponent<Text>().text = string.Format("Worker|{0}prod", Worker.costInProductionPoints);
+        GameObject.Find("WarriorInfoLabel").GetComponent<Text>().text = string.Format("Warrior|{0}prod", Warrior.costInProductionPoints);
         cityInfoPanel.SetActive(false);
     }
 
@@ -70,23 +79,23 @@ public class CityInfoPanelLogic : MonoBehaviour
         goldGrowthLabel.text = string.Format("Gold:+{0}", city.goldGrowth);
         scienceGrowthLabel.text = string.Format("Science:+{0}", city.scienceGrowth);
         totalProductionValueLabel.text = string.Format("Total production: {0}|Max:{1}", city.totalProductionValue, city.maxPossibleProductionValue);
-        notEnoughProductionForPurchase.SetActive(false);
+        //notEnoughProductionForPurchase.SetActive(false);
         cityInfoPanel.SetActive(true);
     }
     
     /// <summary>
     /// Вызывается при нажатии пользователем на кнопку создания юнита.
     /// </summary>
-    public void OnCreateButtonClick()
+    public void OnCreateWorkerButtonClick()
     {
-        // Если игроку не хватает ресурсов на создание юнита:
-        if (Player.selectedCity.totalProductionValue < Unit.costInProductionPoints)
+        // Если игроку не хватает ресурсов на создание рабочего:
+        if (Player.selectedCity.totalProductionValue < Worker.costInProductionPoints)
         {
-            notEnoughProductionForPurchase.SetActive(true);
+            //notEnoughProductionForPurchase.SetActive(true);
         }
         else
         {
-            notEnoughProductionForPurchase.SetActive(false);
+            //notEnoughProductionForPurchase.SetActive(false);
             bool isEmpty = true;
             // не позволяем заказать новый юнит ,если на клетке города стоит какой-то юнит
             foreach (Unit unit in Player.listOfUnits)
@@ -99,19 +108,52 @@ public class CityInfoPanelLogic : MonoBehaviour
             if (isEmpty)
             {
                 // Создаем новый юнит с начальным количество очков действия равным 0
-                Player.CreateUnit(Player.selectedCity.GetCoordinates(), 0);
-                Player.selectedCity.PayProductionCost(Unit.costInProductionPoints);
+                Player.CreateWorker(Player.selectedCity.GetCoordinates(), 0);
+                Player.selectedCity.PayProductionCost(Worker.costInProductionPoints);
             }
-            else
-            {
-                Debug.Log("There\'s a unit in town");
-            }
-           
-
         }
         UpdateCityInfo(Player.selectedCity);
     }
 
+    /// <summary>
+    /// Вызывается при нажатии кнопки создания военного.
+    /// </summary>
+    public void OnCreateWarriorButtonClick()
+    {
+        // Если игроку не хватает ресурсов на создание рабочего:
+        if (Player.selectedCity.totalProductionValue < Warrior.costInProductionPoints)
+        {
+            //notEnoughProductionForPurchase.SetActive(true);
+        }
+        else
+        {
+            //notEnoughProductionForPurchase.SetActive(false);
+            bool isEmpty = true;
+            // не позволяем заказать новый юнит ,если на клетке города стоит какой-то юнит
+            foreach (Unit unit in Player.listOfUnits)
+            {
+                if (Player.selectedCity.GetCoordinates() == unit.GetCoordinates())
+                {
+                    isEmpty = false;
+                }
+            }
+            if (isEmpty)
+            {
+                // Создаем новый юнит с начальным количество очков действия равным 0
+                Player.CreateWarrior(Player.selectedCity.GetCoordinates(), 0);
+                Player.selectedCity.PayProductionCost(Warrior.costInProductionPoints);
+            }
+        }
+        UpdateCityInfo(Player.selectedCity);
+    }
+
+    /// <summary>
+    /// Вызывается при нажатии кнопки создания наемника.
+    /// </summary>
+    public void OnCreateMercenaryButtonClick()
+    {
+        //TODO
+    }
 
     public  void OnCloseCityInfoPanelClick()
     {
