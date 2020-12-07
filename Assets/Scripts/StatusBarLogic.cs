@@ -24,8 +24,6 @@ public class StatusBarLogic : MonoBehaviour
         currentTurnLabel = GameObject.Find("CurrentTurnLabel").GetComponent<Text>();
         goldReserveLabel = GameObject.Find("GoldReserveLabel").GetComponent<Text>();
         scienceGrowthLabel = GameObject.Find("ScienceGrowthLabel").GetComponent<Text>();
-
-        
     }
     private void Start()
     {

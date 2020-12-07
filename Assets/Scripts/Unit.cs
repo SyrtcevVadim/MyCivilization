@@ -58,20 +58,6 @@ public class Unit
     /// </summary>
     protected int currentAP;
     /// <summary>
-    /// Очки действия юнита
-    /// </summary>
-    protected int ActionPoints
-    {
-        get
-        {
-            return currentAP;
-        }
-        set
-        {
-            currentAP = value;
-        }
-    }
-    /// <summary>
     /// Максимально вомзожное количество очков действий юнита.
     /// </summary>
     protected int maxAP;
@@ -113,11 +99,9 @@ public class Unit
 
 
     /// <summary>
-    /// Конструктор класса юнит
+    /// Конструктор класса юнит.
     /// </summary>
-    /// <param name="name">Имя юнита</param>
-    /// <param name="coordinates">Координаты позиции, в которой юнит появится</param>
-    /// <param name="unitTile">Tile, которым представлен спрайт юнита</param>
+    /// <param name="coordinates">Координаты юнита на карте.</param>
     public Unit(Vector3Int coordinates)
     {
         movingGrid = new List<baseLayerTile>(); // Выделяем память под сетку перемещения
@@ -135,6 +119,11 @@ public class Unit
         armor = 3;                              // и 3 очка защиты
     }
 
+    /// <summary>
+    /// Конструктор класса юнит.
+    /// </summary>
+    /// <param name="coordinates">Координаты юнита на карте.</param>
+    /// <param name="startAP">Начальное число очков действия юнита.</param>
     public Unit(Vector3Int coordinates, int startAP)
     {
         movingGrid = new List<baseLayerTile>();
@@ -156,6 +145,12 @@ public class Unit
     /// </summary>
     public List<baseLayerTile> movingGrid;
 
+    /// <summary>
+    /// Просчитывает ячейки, в которые юнит может совершить перемещение.
+    /// </summary>
+    /// <param name="coordinates">Координаты текущей ячейки.</param>
+    /// <param name="remainingAP">Доступные очки действия.</param>
+    /// <param name="requireAP">Очки действия, необходимые для перемещения в текущую ячейку.</param>
     private void AddNeighbourTilesToMovingGrid(Vector3Int coordinates, int remainingAP, int requireAP)
     {
         if (remainingAP >= 0)
@@ -193,7 +188,6 @@ public class Unit
             }
         }
     }
-
 
     /// <summary>
     /// Записывает в possibleTileCoordinatesForMovement все возможные ячейки для передвижения. 
@@ -271,8 +265,6 @@ public class Unit
         currentAP -= movingGrid.Find(x => x.coordinates == coordinates).requiresAP ;// Уменьшаем количество очков действий на 1
     }
     
-    
-    
     /// <summary>
     /// Восстанавливает юниту очки действий.
     /// </summary>
@@ -281,10 +273,8 @@ public class Unit
         currentAP = maxAP;
     }
 
-    
-
     /// <summary>
-    /// Отрисовывает юнит на игровом поле.
+    /// Отображает юнит на игровом поле.
     /// </summary>
     /// <param name="unit">Юнит, который отрисуется на игровом поле.</param>
     public void DisplayUnitOnPlayField()
@@ -293,7 +283,7 @@ public class Unit
     }
 
     /// <summary>
-    /// Стирает юнит с игрового поля.
+    /// Убирает юнит с игрового поля.
     /// </summary>
     /// <param name="unit">Юнит, который будет стёрт с игрового поля.</param>
     public void RemoveUnitFromPlayField()
@@ -301,45 +291,60 @@ public class Unit
         GameData.unitLayer.SetTile(coordinates, null);
     }
 
+    /// <returns>Координаты юнита</returns>
     public Vector3Int GetCoordinates()
     {
         return coordinates;
     }
+
+    /// <returns>Имя юнита.</returns>
     public string GetName()
     {
         return Name;
     }
 
+    /// <returns>Текущее значение очков жизней.</returns>
     public int GetCurrentHP()
     {
         return currentHP;
     }
+
+    /// <returns>Максимально возможное значение очков жизней.</returns>
     public int GetMaxHP()
     {
         return maxHP;
     }
-    /// <returns>Озвращает количество текущих очков действий юнита.</returns>
+
+    /// <returns>Текущее значение очков действия.</returns>
     public int GetCurrentAP()
     {
         return currentAP;
     }
 
+    /// <returns>Накопленные юнитом очки опыта.</returns>
     public int GetCollectedExperience()
     {
         return collectedExperience;
     }
+
+    /// <returns>Количесвто очков, необходимых для перехода на следующий уровень. </returns>
     public int GetExperienceRequiredForNextLevel()
     {
         return experienceRequiredForLevel[currentLevel+1];
     }
+
+    /// <returns>Значение наносимого юнитом урона при атаке.</returns>
     public int GetStrength()
     {
         return strength;
     }
+
+    /// <returns>Очки брони юнита.</returns>
     public int GetArmor()
     {
         return armor;
     }
+
     /// <summary>
     /// Проверяет, остались ли у юнита очки действий.
     /// </summary>
@@ -356,11 +361,17 @@ public class Unit
         }
     }
 
+    /// <returns>Тайл юнита.</returns>
     public Tile GetTile()
     {
         return unitTile;
     }
-    public void SetTile(Tile newTile)
+
+    /// <summary>
+    /// Устанавливает тайл юнита.
+    /// </summary>
+    /// <param name="newTile">Тайл, которым будет заменен тайл юнита.</param>
+    public void SetUnitTile(Tile newTile)
     {
         unitTile = newTile;
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 public class Player
 {
     /// <summary>
@@ -36,15 +37,13 @@ public class Player
         // Выделение памяти на список городов.
         listOfCities = new List<City>();
 
+        // Создаем объект, содержащий информацию о количестве ресурсов игрока.
         data = new Data();
 
         // Изначально никакой город и никакой юнит не выбраны.
         selectedUnit = null;
         selectedCity = null;
     }
-
-    
-
 
     /// <summary>
     /// Создает юнит игрока в указанном координатами месте игрового поля.
@@ -61,11 +60,11 @@ public class Player
     }
 
     /// <summary>
-    /// Создает юнит игрока в указанном координатами месте игрового поля. У юнита будет
-    /// количество очков действия, равное значению startAP
+    /// Создает юнит игрока в указанном координатами месте игрового поля. Начальное количество
+    /// очков действия юнита равняется startAP.
     /// </summary>
     /// <param name="coordinates">Координаты, в которых появится юнит.</param>
-    /// <param name="startAP">Стартовое количество очков действия для юнита</param>
+    /// <param name="startAP">Стартовое количество очков действия юнита</param>
     public static void CreateUnit(Vector3Int coordinates, int startAP)
     {
         Unit createdUnit = new Unit(coordinates, startAP);
@@ -93,7 +92,7 @@ public class Player
     {
         data.goldGrowthPerTurn = 0;
         data.scienceGrowthPerTurn = 0;
-        // Пересчитываем значения приростов золота/науки в ход
+        // Пересчитываем значения приростов золота и науки в ход
         foreach(City city in listOfCities)
         {
             data.goldGrowthPerTurn += city.goldGrowth;
@@ -102,13 +101,21 @@ public class Player
         data.goldReserve += data.goldGrowthPerTurn;
     }
     
+    private static void ChangeUnitTile(Unit unit,Tile newUnitTile)
+    {
+        // Меняем тайл юнита на новый
+        unit.SetUnitTile(newUnitTile);
+        GameData.unitLayer.SetTile(unit.GetCoordinates(), null);
+        // Отрисовываем новый тайл юнита на карте
+        GameData.unitLayer.SetTile(unit.GetCoordinates(), unit.GetTile());
+    }
+
     /// <summary>
     /// Отмечает юнит выбранным.
     /// </summary>
     /// <param name="unit">Выбранный юнит.</param>
     public static void SelectUnit(Unit unit)
     {
-        
         // Проверяем, не выбирается ли данный юнит подряд дважды
         if(selectedUnit == unit)
         {
@@ -121,15 +128,15 @@ public class Player
             {
                 // Если перед этим выбирался другой юнит, снимаем с него выделение.
                 UnselectUnit();
-                
             }
             // Обозначаем данный юнит как выбранный
             selectedUnit = unit;
-            //Меняем цвет выбранного юнита на градиентный желтый
-            selectedUnit.SetTile(GameData.selectedUnitTile);
-            GameData.unitLayer.SetTile(selectedUnit.GetCoordinates(), selectedUnit.GetTile());
 
+            ChangeUnitTile(selectedUnit, GameData.selectedUnitTile);
+
+            // Выводим информацию о выбранном юните в панель информации о юните
             UnitInfoPanelLogic.UpdateUnitInfo(selectedUnit);
+            // Если у юнита есть неистраченные очки действия, отрисовываем сетку перемещений
             if(selectedUnit.HasAP())
             {
                 selectedUnit.SetTilesForMoving();
@@ -145,12 +152,12 @@ public class Player
     public static void UnselectUnit()
     {
         selectedUnit.HideTilesForMoving();
-        // Снимаем с юнита выделение, возвращая ему его основной цвет
-        selectedUnit.SetTile(GameData.initialUnitTile);
-        GameData.unitLayer.SetTile(selectedUnit.GetCoordinates(), selectedUnit.GetTile());
+        // Снимаем с юнита выделение
+        ChangeUnitTile(selectedUnit, GameData.initialUnitTile);
 
+        // Скрываем панель информации о юните
+        UnitInfoPanelLogic.Close();
         selectedUnit = null;
-        UnitInfoPanelLogic.unitInfoPanel.SetActive(false);
     }
 
     /// <summary>
@@ -161,7 +168,7 @@ public class Player
     {
         selectedCity = city;
         // Выводим информацию о городе.
-        CityInfoPanelLogic.UpdateCityInfo(city);
+        CityInfoPanelLogic.UpdateCityInfo(selectedCity);
     }
     
     /// <summary>
@@ -180,7 +187,4 @@ public class Player
         CreateUnit(new Vector3Int(0, -2, 0));
         UpdatePlayerData();
     }
-
-
-
 }

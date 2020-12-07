@@ -14,11 +14,51 @@ public class City
     /// </summary>
     private Vector3Int coordinates;
 
-
     /// <summary>
     /// Тайл, представляющий город на карте
     /// </summary>
     public Tile cityTile;
+
+    /// <summary>
+    /// Показывает, является ли текущий город столицей.
+    /// </summary>
+    bool isCapital;
+
+    /// <summary>
+    /// Список координат тайлов, которые принадлежать городу
+    /// </summary>
+    public List<Vector3Int> territory;
+
+    /// <summary>
+    /// Прирост продукции каждый ход.
+    /// </summary>
+    public double productionGrowth;
+
+    /// <summary>
+    /// Значение произведенной продукции в городе.
+    /// </summary>
+    public double totalProductionValue;
+
+    /// <summary>
+    /// Верхняя граница накопления продукции в городе.
+    /// </summary>
+    public double maxPossibleProductionValue;
+
+    /// <summary>
+    /// Прирост золота каждый ход
+    /// </summary>
+    public int goldGrowth;
+
+    /// <summary>
+    /// Прирост науки каждый ход
+    /// </summary>
+    public int scienceGrowth;
+
+    /// <summary>
+    /// Текущее население города
+    /// </summary>
+    public int populationCounter;
+
 
     /// <summary>
     ///  Конструктор класса Город
@@ -55,49 +95,8 @@ public class City
         territory = new List<Vector3Int>();
     }
 
-
     /// <summary>
-    /// Показывает, является ли текущий город столицей.
-    /// </summary>
-    bool isCapital;
-
-    /// <summary>
-    /// Прирост продукции каждый ход.
-    /// </summary>
-    public double productionGrowth;
-
-    /// <summary>
-    /// Значение произведенной продукции в городе.
-    /// </summary>
-    public double totalProductionValue;
-
-    /// <summary>
-    /// Верхняя граница накопления продукции в городе.
-    /// </summary>
-    public double maxPossibleProductionValue;
-
-    /// <summary>
-    /// Прирост золота каждый ход
-    /// </summary>
-    public int goldGrowth;
-
-    /// <summary>
-    /// Прирост науки каждый ход
-    /// </summary>
-    public int scienceGrowth;
-
-    /// <summary>
-    /// Текущее население города
-    /// </summary>
-    public int populationCounter;
-
-    /// <summary>
-    /// Список координат тайлов, которые принадлежать городу
-    /// </summary>
-    public List<Vector3Int> territory;
-
-    /// <summary>
-    /// Просчитывает примыкающую к городу территорию.
+    /// Просчитывает территорию города
     /// </summary>
     public void SetTerritory()
     {
@@ -113,6 +112,7 @@ public class City
             }
         }
     }
+    
     /// <summary>
     /// Отображаем территорию города на игровом поле
     /// </summary>
@@ -124,6 +124,20 @@ public class City
         }    
     }
 
+    /// <summary>
+    /// Скрывает территорию городов.
+    /// </summary>
+    public void HideTerritory()
+    {
+        foreach(Vector3Int coord in territory)
+        {
+            GameData.terrainLayer.SetTile(coord, null);
+        }
+    }
+
+    /// <summary>
+    /// Производит продукцию в городе. Наращивает счетчик накопленной продукции.
+    /// </summary>
     public void GenerateProduction()
     {
         if(totalProductionValue + productionGrowth <= maxPossibleProductionValue)
@@ -135,6 +149,7 @@ public class City
             totalProductionValue = maxPossibleProductionValue;
         }
     }
+
     /// <summary>
     /// Заплатить очки продукции города.
     /// </summary>
@@ -163,8 +178,10 @@ public class City
     {
         GameData.cityLayer.SetTile(coordinates, null);
     }
-
-
+    /// <summary>
+    /// Получает координаты города на карте.
+    /// </summary>
+    /// <returns>Координаты города на карте.</returns>
     public Vector3Int GetCoordinates()
     {
         return coordinates;

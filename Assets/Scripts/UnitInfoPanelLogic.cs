@@ -72,10 +72,19 @@ public class UnitInfoPanelLogic : MonoBehaviour
     }
 
     /// <summary>
+    /// Закрывает панель информации о юните.
+    /// </summary>
+    public static void Close()
+    {
+        unitInfoPanel.SetActive(false);
+    }
+
+    /// <summary>
     /// Вызывается при нажатии на кнопку закрытия меню информации о выбранном юните.
     /// </summary>
     public void OnCloseUnitInfoButtonClick()
     {
+        Close();
         Player.UnselectUnit();
     }
 }
