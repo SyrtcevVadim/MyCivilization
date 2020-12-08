@@ -48,12 +48,7 @@ public class Warrior : Unit
     /// <param name="startAP">Начальное число очков действия юнита.</param>
     public Warrior(Vector3Int coordinates, int startAP) : base(coordinates, startAP)
     {
-        Specialization = "Warrior";
-        maxHP = 100;
-        currentHP = maxHP;
-        maxAP = 2;
-        currentAP = maxAP;
-        armor = 3;
-        strength = 30;
+        SetCharacteristics();
+        currentAP = startAP;
     }
 }

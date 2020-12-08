@@ -55,12 +55,7 @@ public class Worker: Unit
     /// <param name="startAP">Начальное число очков действия.</param>
     public Worker(Vector3Int coordinates, int startAP):base(coordinates, startAP)
     {
-        Specialization = "Worker";
-        maxHP = 10;
-        currentHP = maxHP;
-        maxAP = 3;
-        currentAP = maxAP;
-        armor = 0;
-        strength = 0;
+        SetCharacteristics();
+        currentAP = startAP;
     }
 }
