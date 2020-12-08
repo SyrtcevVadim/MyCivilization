@@ -9,15 +9,23 @@ public class PlayFieldLogic : MonoBehaviour
     /// Координаты ячейки карты, на которую пользователь навел курсором мыши.
     /// </summary>
     private static Vector3Int selectedTileCoordinates;
-    
+
+    List<EnemyComputer> listOfEnemies;
+
     private void Awake()
     {
         // Создаем текущего игрока.
+        listOfEnemies = new List<EnemyComputer>();
+        listOfEnemies.Add(new EnemyComputer());
         Player.Init();
     }
     private void Start()
     {
-        Player.SetTestTownAndUnitKit();
+        Player.SetTestCityAndUnitKit();
+        foreach(EnemyComputer enemy in listOfEnemies)
+        {
+            enemy.SetTestCityAndUnitKit();
+        }
     }
 
     /// <summary>

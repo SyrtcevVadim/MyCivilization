@@ -214,7 +214,7 @@ public class Player
     /// <summary>
     /// Отладочная ф-ия для создания трех тестовых городов и трех юнитов.
     /// </summary>
-    public static void SetTestTownAndUnitKit()
+    public static void SetTestCityAndUnitKit()
     {
         // Создаем столицу и два города провинции
         CreateCity(new Vector3Int(1, 2, 0), "Moscow", true);

@@ -63,12 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Barbarian.cs" />
     <Compile Include="Assets\Scripts\CameraMoving.cs" />
     <Compile Include="Assets\Scripts\City.cs" />
     <Compile Include="Assets\Scripts\CityInfoPanelLogic.cs" />
     <Compile Include="Assets\Scripts\CreditsMenuLogic.cs" />
     <Compile Include="Assets\Scripts\Data.cs" />
-    <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\EnemyComputer.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />
     <Compile Include="Assets\Scripts\MainMenuLogic.cs" />
     <Compile Include="Assets\Scripts\Mammoth.cs" />

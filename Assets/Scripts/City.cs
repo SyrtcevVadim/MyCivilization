@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class City
 {
+
+    // TODO сделать поля закрытыми, но пока пойдет
     /// <summary>
     /// Название города
     /// </summary>

@@ -64,6 +64,9 @@ public class GameData:MonoBehaviour
     /// </summary>
     public static Tile selectedUnitTile;
 
+    public static Tile enemyUnitTile;
+    public static Tile enemyCity;
+
     public static Tile selectedTile;
 
     /// <summary>
@@ -107,6 +110,10 @@ public class GameData:MonoBehaviour
         provincialCityTile = Resources.Load<Tile>(@"Palettes\CityLayerPalette\ProvincialCity"); // Получаем тайл города-провинции
         initialUnitTile = Resources.Load<Tile>(@"Palettes\UnitLayerPalette\InitialUnit");                // Получаем тайл юнита-человека
         selectedUnitTile = Resources.Load<Tile>(@"Palettes\UnitLayerPalette\SelectedUnit");
+
+        enemyUnitTile = Resources.Load<Tile>(@"Palettes\UnitLayerPalette\EnemyUnit");
+        enemyCity = Resources.Load<Tile>(@"Palettes\CityLayerPalette\EnemyCity");
+
         territoryTile = Resources.Load<Tile>(@"Palettes\TerritoryLayerPalette\TerritoryTile");  // Получаем тайл территории
         tileForMovingIn = Resources.Load<Tile>(@"Palettes\MovementLayerPalette\TileForMovingIn");   // Получаем тайл для отображения клеток для возможного перемещения
         selectedTile = Resources.Load<Tile>(@"Palettes\SelectTilePalette\SelectedTile");
