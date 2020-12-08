@@ -27,11 +27,6 @@ public class City
     bool isCapital;
 
     /// <summary>
-    /// Список координат тайлов, которые принадлежать городу
-    /// </summary>
-    public List<Vector3Int> territory;
-
-    /// <summary>
     /// Прирост продукции каждый ход.
     /// </summary>
     public double productionGrowth;
@@ -94,47 +89,6 @@ public class City
         this.coordinates = coordinates; // Сохраняем координаты города на карте
         
         this.isCapital = isCapital;     // Сохраняем информацию о том, является ли этот город столичным
-        territory = new List<Vector3Int>();
-    }
-
-    /// <summary>
-    /// Просчитывает территорию города
-    /// </summary>
-    public void SetTerritory()
-    {
-        // Ячейка с самим городом тоже принадлежит территории города
-        territory.Add(coordinates);
-        // Получаем массив координат соседних для данной ячеек
-        Vector3Int[] neighbourTilesCoordinates = PlayFieldLogic.GetListOfNeighbourTiles(coordinates);
-        foreach (Vector3Int item in neighbourTilesCoordinates)
-        {
-            if (PlayFieldLogic.IsTileExists(item))
-            {
-                territory.Add(item);
-            }
-        }
-    }
-    
-    /// <summary>
-    /// Отображаем территорию города на игровом поле
-    /// </summary>
-    public void ShowTerritory()
-    {
-        foreach(Vector3Int coord in territory)
-        {
-            GameData.territoryLayer.SetTile(coord, GameData.territoryTile);
-        }    
-    }
-
-    /// <summary>
-    /// Скрывает территорию городов.
-    /// </summary>
-    public void HideTerritory()
-    {
-        foreach(Vector3Int coord in territory)
-        {
-            GameData.terrainLayer.SetTile(coord, null);
-        }
     }
 
     /// <summary>
@@ -168,8 +122,6 @@ public class City
     public void DisplayCityOnPlayField()
     {
         GameData.cityLayer.SetTile(coordinates, cityTile);
-        SetTerritory();
-        ShowTerritory();
     }
 
     /// <summary>

@@ -27,7 +27,7 @@ public class Warrior : Unit
         currentHP = maxHP;
         maxAP = Convert.ToInt32(rawMaxAP);
         currentAP = maxAP;
-        armor = Convert.ToInt32(rawStrength);
+        armor = Convert.ToInt32(rawArmor);
         strength = Convert.ToInt32(rawStrength);
     }
 
