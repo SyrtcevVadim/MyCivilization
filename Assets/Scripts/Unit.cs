@@ -114,12 +114,6 @@ public abstract class Unit
         currentLevel = 0;
         unitTile = GameData.initialUnitTile;
 
-        maxAP = 2;
-        currentAP = maxAP;                      // У человека изначально 2 очка действия
-        maxHP = 100;                            // 100 очков жизней
-        currentHP = maxHP;                      // Изначально у юнита максимальное количество очков здоровья
-        strength = 20;                          // 20 очков силы
-        armor = 3;                              // и 3 очка защиты
     }
 
     /// <summary>
@@ -132,15 +126,9 @@ public abstract class Unit
         movingGrid = new List<territoryLayerTile>();
         Name = GameData.GetRandomHumanName();
         this.coordinates = coordinates;
-        unitTile = GameData.initialUnitTile;
-        currentAP = startAP;
-        maxAP = 2;
-        maxHP = 100;
-        currentHP = maxHP;
         collectedExperience = 0;
         currentLevel = 0;
-        strength = 20;
-        armor = 3;
+        unitTile = GameData.initialUnitTile;
     }
 
     /// <summary>

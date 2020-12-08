@@ -78,7 +78,7 @@ public class CityInfoPanelLogic : MonoBehaviour
         productionGrowthLabel.text = string.Format("Production:+{0}", city.productionGrowth);
         goldGrowthLabel.text = string.Format("Gold:+{0}", city.goldGrowth);
         scienceGrowthLabel.text = string.Format("Science:+{0}", city.scienceGrowth);
-        totalProductionValueLabel.text = string.Format("Total production: {0}|Max:{1}", city.totalProductionValue, city.maxPossibleProductionValue);
+        totalProductionValueLabel.text = string.Format("Total production: {0:#.#}|Max:{1:#.#}", city.totalProductionValue, city.maxPossibleProductionValue);
         //notEnoughProductionForPurchase.SetActive(false);
         cityInfoPanel.SetActive(true);
     }
