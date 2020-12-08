@@ -70,6 +70,7 @@ public class Player
         // Отображает юнит на игровом поле.
         createdUnit.DisplayUnitOnPlayField();
     }
+
     /// <summary>
     /// 
     /// </summary>
@@ -83,6 +84,7 @@ public class Player
         // Отображает юнит на игровом поле.
         createdUnit.DisplayUnitOnPlayField();
     }
+
     /// <summary>
     /// 
     /// </summary>
@@ -126,9 +128,19 @@ public class Player
             data.goldGrowthPerTurn += city.goldGrowth;
             data.scienceGrowthPerTurn += city.scienceGrowth;
         }
-        data.goldReserve += data.goldGrowthPerTurn;
+        // Наращиваем деньги только после первого хода игрока
+        if(GameData.currentTurnCounter > 1)
+        {
+            data.goldReserve += data.goldGrowthPerTurn;
+        }
+        
     }
     
+    /// <summary>
+    /// Изменяет тайл юнита.
+    /// </summary>
+    /// <param name="unit">Юнит, тайл которого будет изменен.</param>
+    /// <param name="newUnitTile">Новый тайл юнита.</param>
     private static void ChangeUnitTile(Unit unit,Tile newUnitTile)
     {
         // Меняем тайл юнита на новый

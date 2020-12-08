@@ -45,12 +45,12 @@ public class UILogic : MonoBehaviour
     /// </summary>
     public void OnEndTurnButtonClick()
     {
+        // Наращивается счетчик текущего хода
+        IncreaseCurrentTurnCounter();
         Player.UpdatePlayerData();
         // После окончания хода у всех юнитов восстанавливаются очки действий(action points)
         RestorePlayerUnitActionPoints(Player.listOfUnits);
-        // Наращивается счетчик текущего хода
-        IncreaseCurrentTurnCounter();
-
+        
         // Если какой-то юнит оставлся активным на момент окончания хода, обновим о нем информацию.
         if(UnitInfoPanelLogic.unitInfoPanel.activeSelf)
         {
