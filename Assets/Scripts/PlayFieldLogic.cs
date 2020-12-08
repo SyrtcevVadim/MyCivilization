@@ -5,7 +5,10 @@ using UnityEngine.Tilemaps;
 
 public class PlayFieldLogic : MonoBehaviour
 {
-    Vector3Int selectedTileCoordinates;
+    /// <summary>
+    /// Координаты ячейки карты, на которую пользователь навел курсором мыши.
+    /// </summary>
+    private static Vector3Int selectedTileCoordinates;
     
     private void Awake()
     {
@@ -173,26 +176,35 @@ public class PlayFieldLogic : MonoBehaviour
         return GameData.terrainLayer.WorldToCell(coordinates);
     }
 
+    /// <summary>
+    /// Выделяет ячейку с координатами coordinates.
+    /// </summary>
+    /// <param name="coordinates">Координаты выделяемой ячейки.</param>
+    private static void SelectTile(Vector3Int coordinates)
+    {
+        if(selectedTileCoordinates == null)
+        {
+            selectedTileCoordinates = coordinates;
+            GameData.selectTileLayer.SetTile(selectedTileCoordinates, GameData.selectedTile);
+        }
+        else
+        {
+            GameData.selectTileLayer.SetTile(selectedTileCoordinates, null);
+            selectedTileCoordinates = coordinates;
+            GameData.selectTileLayer.SetTile(selectedTileCoordinates, GameData.selectedTile);
+        }
+    }
+
     private void Update()
     {
-        // Получаем координаты точки в пространстве, в которую пользователь кликнул
-        Vector3 mouseWorldCoordinates = GetMouseWorldCoordinates();
-        // Конвертируем позицию этой точки в координаты ячейки, в которой она содержится
-        Vector3Int tileCoordinates = GetTileCoordinates(mouseWorldCoordinates);
+        
+        Vector3 mouseWorldCoordinates = GetMouseWorldCoordinates();         // Получаем положение курсора мыши в мировых координатах
+        Vector3Int tileCoordinates = GetTileCoordinates(mouseWorldCoordinates); // Конвертируем позицию этой точки в координаты ячейки, в которой она содержится
 
         // При наведении курсора на ячейку поля, на нее накладывается выделение в виде шестиугольной рамки.
-        if(IsTileExists(tileCoordinates))
+        if (IsTileExists(tileCoordinates))
         {
-            if(selectedTileCoordinates == null)
-            {
-                GameData.selectTileLayer.SetTile(tileCoordinates, GameData.selectedTile);
-            }
-            else
-            {
-                GameData.selectTileLayer.SetTile(selectedTileCoordinates, null);
-                selectedTileCoordinates = tileCoordinates;
-                GameData.selectTileLayer.SetTile(tileCoordinates, GameData.selectedTile);
-            }
+            SelectTile(tileCoordinates);
         }
 
         // По нажатию клавиши Esc открывается внутриигровое меню

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 /// <summary>
 /// Класс ячейки ландшафта на игровом поле.
 /// </summary>
-public class baseLayerTile
+public class territoryLayerTile
 {
     /// <summary>
     /// Координаты ячейки на игровом поле.
@@ -15,7 +15,7 @@ public class baseLayerTile
     /// Количество очков действия, требуемых для перемещения из текущей ячейки в эту.
     /// </summary>
     public int requiresAP;
-    public baseLayerTile(Vector3Int coord, int requiresAP)
+    public territoryLayerTile(Vector3Int coord, int requiresAP)
     {
         this.coordinates = coord;
         this.requiresAP = requiresAP;
@@ -104,7 +104,7 @@ public class Unit
     /// <param name="coordinates">Координаты юнита на карте.</param>
     public Unit(Vector3Int coordinates)
     {
-        movingGrid = new List<baseLayerTile>(); // Выделяем память под сетку перемещения
+        movingGrid = new List<territoryLayerTile>(); // Выделяем память под сетку перемещения
 
         Name = GameData.GetRandomHumanName();   // Получаем случайное имя для юнита
         this.coordinates = coordinates;         // Позиционируем его на карте
@@ -126,7 +126,7 @@ public class Unit
     /// <param name="startAP">Начальное число очков действия юнита.</param>
     public Unit(Vector3Int coordinates, int startAP)
     {
-        movingGrid = new List<baseLayerTile>();
+        movingGrid = new List<territoryLayerTile>();
         Name = GameData.GetRandomHumanName();
         this.coordinates = coordinates;
         unitTile = GameData.initialUnitTile;
@@ -143,7 +143,7 @@ public class Unit
     /// <summary>
     /// Список ячеек, в которые юнит может совершить перемещение.
     /// </summary>
-    public List<baseLayerTile> movingGrid;
+    public List<territoryLayerTile> movingGrid;
 
     /// <summary>
     /// Просчитывает ячейки, в которые юнит может совершить перемещение.
@@ -162,7 +162,7 @@ public class Unit
             if (movingGrid.Find(obj => obj.coordinates == coordinates) == null)
             {
                 //Debug.Log("require AP: " + requireAP + "| tile: " + coordinates);
-                movingGrid.Add(new baseLayerTile(coordinates, requireAP));
+                movingGrid.Add(new territoryLayerTile(coordinates, requireAP));
                 //movingTilesCoordinates.Add(coordinates);
             }
             // Если текущая ячейка уже существует, но в нее можно добраться коротким путем.
@@ -213,7 +213,7 @@ public class Unit
     /// </summary>
     public void ShowTilesForMoving()
     {
-        foreach(baseLayerTile tile in movingGrid)
+        foreach(territoryLayerTile tile in movingGrid)
         {
             GameData.movementLayer.SetTile(tile.coordinates, GameData.tileForMovingIn);
         }
@@ -224,7 +224,7 @@ public class Unit
     /// </summary>
     public void HideTilesForMoving()
     {
-        foreach(baseLayerTile tile in movingGrid)
+        foreach(territoryLayerTile tile in movingGrid)
         {
             GameData.movementLayer.SetTile(tile.coordinates, null);
         }
@@ -241,7 +241,7 @@ public class Unit
         if(destination !=coordinates)
         {
             // Если пользователь кликнул в одну из ячеек сетки перемещений, разрешаем ему ход
-            foreach(baseLayerTile tile in movingGrid)
+            foreach(territoryLayerTile tile in movingGrid)
             {
                 if(destination == tile.coordinates)
                 {

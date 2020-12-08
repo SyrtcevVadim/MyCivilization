@@ -46,23 +46,21 @@ public class Player
     }
 
     /// <summary>
-    /// 
+    /// Создает юнита-рабочего.
     /// </summary>
-    /// <param name="coordinates"></param>
+    /// <param name="coordinates">Координаты, в которых юнит появится.</param>
     public static void CreateWorker(Vector3Int coordinates)
     {
-        // Создает объект нового юнита
         Worker createdUnit = new Worker(coordinates);
-        // Добавляет новый юнит в список юнитов игрока.
         listOfUnits.Add(createdUnit);
-        // Отображает юнит на игровом поле.
         createdUnit.DisplayUnitOnPlayField();
     }
+
     /// <summary>
-    /// 
+    /// Создает юнита-рабочего
     /// </summary>
-    /// <param name="coordinates"></param>
-    /// <param name="startAP"></param>
+    /// <param name="coordinates">Координаты, в которых юнит появится.</param>
+    /// <param name="startAP">Начальное число очков действия юнита</param>
     public static void CreateWorker(Vector3Int coordinates, int startAP)
     {
         // Создает объект нового юнита
