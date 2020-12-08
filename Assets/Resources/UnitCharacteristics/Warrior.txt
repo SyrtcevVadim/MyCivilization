@@ -1,0 +1,5 @@
+MaxHP: 100
+MaxAP: 2
+Strength: 30
+Armor: 3
+END

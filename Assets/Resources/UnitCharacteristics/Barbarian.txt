@@ -1,0 +1,4 @@
+MaxHP:70
+MaxAP:2
+Strength:40
+Armor:0

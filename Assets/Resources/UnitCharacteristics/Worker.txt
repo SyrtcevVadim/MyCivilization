@@ -1,0 +1,5 @@
+MaxHP: 10
+MaxAP: 3
+Strength: 0
+Armor: 0
+END

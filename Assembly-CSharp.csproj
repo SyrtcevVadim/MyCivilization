@@ -83,6 +83,9 @@
     <Compile Include="Assets\Scripts\UnitInfoPanelLogic.cs" />
     <Compile Include="Assets\Scripts\Warrior.cs" />
     <Compile Include="Assets\Scripts\Worker.cs" />
+    <None Include="Assets\Resources\UnitCharacteristics\Worker.txt" />
+    <None Include="Assets\Resources\UnitCharacteristics\Barbarian.txt" />
+    <None Include="Assets\Resources\UnitCharacteristics\Warrior.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

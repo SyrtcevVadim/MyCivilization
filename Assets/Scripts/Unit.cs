@@ -24,7 +24,7 @@ public class territoryLayerTile
 /// <summary>
 /// Базовый класс для всех юнитов в игре.
 /// </summary>
-public class Unit
+public abstract class Unit
 {
     
     /// <summary>
@@ -98,6 +98,9 @@ public class Unit
     public static int costInProductionPoints = 10;
 
 
+    protected abstract void SetCharacteristics();
+   
+
     /// <summary>
     /// Конструктор класса юнит.
     /// </summary>
@@ -105,16 +108,16 @@ public class Unit
     public Unit(Vector3Int coordinates)
     {
         movingGrid = new List<territoryLayerTile>(); // Выделяем память под сетку перемещения
-
         Name = GameData.GetRandomHumanName();   // Получаем случайное имя для юнита
         this.coordinates = coordinates;         // Позиционируем его на карте
+        collectedExperience = 0;                // При создании у юнита нет очков опыта
+        currentLevel = 0;
         unitTile = GameData.initialUnitTile;
+
         maxAP = 2;
         currentAP = maxAP;                      // У человека изначально 2 очка действия
         maxHP = 100;                            // 100 очков жизней
         currentHP = maxHP;                      // Изначально у юнита максимальное количество очков здоровья
-        collectedExperience = 0;                // При создании у юнита нет очков опыта
-        currentLevel = 0;                                                   
         strength = 20;                          // 20 очков силы
         armor = 3;                              // и 3 очка защиты
     }
