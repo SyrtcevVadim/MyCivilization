@@ -24,7 +24,7 @@ public class UILogic : MonoBehaviour
     /// Обновляет очки действия у всех юнитов игрока. У каждого юнита устанавливается 2 очка действия.
     /// </summary>
     /// <param name="listOfPlayerUnits">Список юнитов игрока.</param>
-    private void RestorePlayerUnitActionPoints(List<Unit> listOfPlayerUnits)
+    private void RestorePlayerUnitsAP(List<Unit> listOfPlayerUnits)
     {
         foreach(Unit unit in listOfPlayerUnits)
         {
@@ -49,7 +49,7 @@ public class UILogic : MonoBehaviour
         IncreaseCurrentTurnCounter();
         Player.UpdatePlayerData();
         // После окончания хода у всех юнитов восстанавливаются очки действий(action points)
-        RestorePlayerUnitActionPoints(Player.listOfUnits);
+        RestorePlayerUnitsAP(Player.listOfUnits);
         
         // Если какой-то юнит оставлся активным на момент окончания хода, обновим о нем информацию.
         if(UnitInfoPanelLogic.unitInfoPanel.activeSelf)
