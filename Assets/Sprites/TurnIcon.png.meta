@@ -1,0 +1,620 @@
+fileFormatVersion: 2
+guid: 0a14f956e62a1094e905156a1d3fa872
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4699124816679144855
+    second: TurnIcon_0
+  - first:
+      213: -4723650611604374553
+    second: TurnIcon_1
+  - first:
+      213: -8927818830786850732
+    second: TurnIcon_2
+  - first:
+      213: -1394496918656983397
+    second: TurnIcon_3
+  - first:
+      213: 793370385618304495
+    second: TurnIcon_4
+  - first:
+      213: 6732752199812315005
+    second: TurnIcon_5
+  - first:
+      213: -4075419565465082026
+    second: TurnIcon_6
+  - first:
+      213: -7864515113024308391
+    second: TurnIcon_7
+  - first:
+      213: -2089017206341529214
+    second: TurnIcon_8
+  - first:
+      213: -6115778926327240611
+    second: TurnIcon_9
+  - first:
+      213: 6822892957023973707
+    second: TurnIcon_10
+  - first:
+      213: 5500719308679694222
+    second: TurnIcon_11
+  - first:
+      213: 5582559829608311786
+    second: TurnIcon_12
+  - first:
+      213: 7342267010125721863
+    second: TurnIcon_13
+  - first:
+      213: -8845540085939655224
+    second: TurnIcon_14
+  - first:
+      213: 6978326927128785514
+    second: TurnIcon_15
+  - first:
+      213: 394712882413934609
+    second: TurnIcon_16
+  - first:
+      213: -6369018080161227276
+    second: TurnIcon_17
+  - first:
+      213: 1629621044591724512
+    second: TurnIcon_18
+  - first:
+      213: -1872557608117486325
+    second: TurnIcon_19
+  - first:
+      213: -8043343992225435388
+    second: TurnIcon_20
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TurnIcon_0
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1161
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79d026daf15a63140800000000000000
+      internalID: 4699124816679144855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_1
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 1161
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ebb344bbc8327eb0800000000000000
+      internalID: -4723650611604374553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_2
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 1161
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45018e333140a1480800000000000000
+      internalID: -8927818830786850732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_3
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 1161
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ed21bd070c5ace0800000000000000
+      internalID: -1394496918656983397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_4
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 1161
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fedf71a892e920b00800000000000000
+      internalID: 793370385618304495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_5
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 873
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d77fa8e347a8f6d50800000000000000
+      internalID: 6732752199812315005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_6
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 873
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 657e6c96f733177c0800000000000000
+      internalID: -4075419565465082026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_7
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 873
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95bbe753c21abd290800000000000000
+      internalID: -7864515113024308391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_8
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 873
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 281955e3be15203e0800000000000000
+      internalID: -2089017206341529214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_9
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 873
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d58e1732873602ba0800000000000000
+      internalID: -6115778926327240611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_10
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 585
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b41bde3cef8cfae50800000000000000
+      internalID: 6822892957023973707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_11
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 585
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e874cf2311b765c40800000000000000
+      internalID: 5500719308679694222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_12
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 585
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeb2b2d569c397d40800000000000000
+      internalID: 5582559829608311786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_13
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 585
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 701fc98d1f8f4e560800000000000000
+      internalID: 7342267010125721863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_14
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 585
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cda61358245e3580800000000000000
+      internalID: -8845540085939655224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_15
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 297
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a62fd021e5ff7d060800000000000000
+      internalID: 6978326927128785514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_16
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 297
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1189d88764d4a7500800000000000000
+      internalID: 394712882413934609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_17
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 297
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fd13f3fcc3bc97a0800000000000000
+      internalID: -6369018080161227276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_18
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 297
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e70469b4b39d9610800000000000000
+      internalID: 1629621044591724512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_19
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 297
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0db3b2d6c65306e0800000000000000
+      internalID: -1872557608117486325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnIcon_20
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 9
+        width: 207
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4017129214d406090800000000000000
+      internalID: -8043343992225435388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
