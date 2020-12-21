@@ -799,6 +799,7 @@ GameObject:
   - component: {fileID: 172720059}
   - component: {fileID: 172720058}
   - component: {fileID: 172720060}
+  - component: {fileID: 172720061}
   m_Layer: 5
   m_Name: StatusBar
   m_TagString: Untagged
@@ -879,6 +880,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cff686e435b9049b8f60f6551467c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &172720061
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172720056}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea22fbdff6c6d104e8d734fbe52c4a90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &186942515
 GameObject:
   m_ObjectHideFlags: 0
@@ -2477,7 +2497,7 @@ Animator:
   m_GameObject: {fileID: 507416881}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 42f127499f60a274fbc6ab2c9b738f5d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1e182a1f8f3e40b428edb70fe2c2f968, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7915,7 +7935,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.016, y: 0.52774614}
   m_AnchorMax: {x: 0.62600005, y: 0.6274922}
-  m_AnchoredPosition: {x: -2.441002, y: 0.27199936}
+  m_AnchoredPosition: {x: -2.4410095, y: 0.27199936}
   m_SizeDelta: {x: -3.9907532, y: -1.9201546}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1310758126
@@ -8155,7 +8175,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.016, y: 0.71161544}
   m_AnchorMax: {x: 0.61, y: 0.80500007}
-  m_AnchoredPosition: {x: -0.4410019, y: 0.61800385}
+  m_AnchoredPosition: {x: -0.44100952, y: 0.61800385}
   m_SizeDelta: {x: 0.0093688965, y: -0.5330658}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1400011679
@@ -9099,7 +9119,7 @@ Animator:
   m_GameObject: {fileID: 1684697458}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 496106c9abe53a343983081482b3d38a, type: 2}
+  m_Controller: {fileID: 9100000, guid: bfefe1b17c72809448a02d0474f92e63, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10230,7 +10250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.016, y: 0.41733462}
   m_AnchorMax: {x: 0.76327056, y: 0.5}
-  m_AnchoredPosition: {x: -1.2799911, y: -0.45999908}
+  m_AnchoredPosition: {x: -1.2799988, y: -0.45999908}
   m_SizeDelta: {x: -1.6749725, y: -0.15740967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1953826298
