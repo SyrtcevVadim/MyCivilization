@@ -235,6 +235,7 @@ public class PlayFieldLogic : MonoBehaviour
             // С помощью левой кнопки мыши пользователь может выбрать юнита для передвижения
             if (Input.GetMouseButtonDown(LEFT_BUTTON_CLICK))
             {
+                Debug.Log($"{mouseWorldCoordinates} and {tileCoordinates}");
                 // Проверяем, кликнул ли пользователь ЛКМ по одному из своих городов:
                 ProcessClickOnPlayerCity(tileCoordinates);
                 // Проверяем, кликнул ли пользователь ЛКМ по одному из своих юнитов:
