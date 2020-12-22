@@ -82,7 +82,7 @@ public class PlayFieldLogic : MonoBehaviour
         foreach (Unit unit in Player.listOfUnits)
         {
             // Если пользователь щелкнул ЛКМ по юниту, то он его выбирает. 
-            if (unit.GetCoordinates() == coordinates)
+            if (unit.Coordinates == coordinates)
             {
                 Player.SelectUnit(unit);
             }

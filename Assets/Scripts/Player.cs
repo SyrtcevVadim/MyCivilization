@@ -142,9 +142,9 @@ public class Player
     {
         // Меняем тайл юнита на новый
         unit.SetUnitTile(newUnitTile);
-        GameData.unitLayer.SetTile(unit.GetCoordinates(), null);
+        GameData.unitLayer.SetTile(unit.Coordinates, null);
         // Отрисовываем новый тайл юнита на карте
-        GameData.unitLayer.SetTile(unit.GetCoordinates(), unit.GetTile());
+        GameData.unitLayer.SetTile(unit.Coordinates, unit.GetTile());
     }
 
     /// <summary>

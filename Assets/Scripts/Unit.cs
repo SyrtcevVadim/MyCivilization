@@ -31,11 +31,29 @@ public abstract class Unit
     /// Координаты ячейки юнита на игровом поле.
     /// </summary>
     protected Vector3Int coordinates;
+    /// <summary>
+    /// Координаты юнита на игровом поле.
+    /// </summary>
+    public Vector3Int Coordinates
+    {
+        get
+        {
+            return coordinates;
+        }
+    }
 
     /// <summary>
     /// Тайл, представляющий юнита на игровом поле.
     /// </summary>
     protected  Tile unitTile;
+    
+    public Tile UnitTile
+    {
+        get
+        {
+            return unitTile;
+        }
+    }
 
     // TODO переделать под индексатор. Опасно: выход за границы массива при получении максимального уровня!!
     /// <summary>
@@ -47,39 +65,90 @@ public abstract class Unit
     /// <summary>
     /// Имя юнита
     /// </summary>
-    protected string Name { get; set; }
+    public string Name { get; set; }
     /// <summary>
     /// Специализация юнита
     /// </summary>
-    protected string Specialization { get; set; }
+    public string Specialization { get; set; }
 
     /// <summary>
     /// Очки действия юнита
     /// </summary>
     protected int currentAP;
     /// <summary>
+    /// Текущие очки действия юнита.
+    /// </summary>
+    public int CurrentAP
+    {
+        get
+        {
+            return currentAP;
+        }
+    }
+    /// <summary>
     /// Максимально вомзожное количество очков действий юнита.
     /// </summary>
     protected int maxAP;
-
+    /// <summary>
+    /// Верхняя граница очков действий юнита.
+    /// </summary>
+    public int MaxAP
+    {
+        get
+        {
+            return maxAP;
+        }
+    }
 
     /// <summary>
     /// Уровень юнита
     /// </summary>
     protected int currentLevel;
+
+    public int CurrentLevel
+    {
+        get
+        {
+            return currentLevel;
+        }
+    }
     /// <summary>
     /// Количество очков опыта юнита.
     /// </summary>
     protected int collectedExperience;
+    public int CollectedExperience
+    {
+        get
+        {
+            return collectedExperience;
+        }
+    }
 
     /// <summary>
     /// Максимально возможное количество очков здоровью у юнита.
     /// </summary>
     protected int maxHP;
     /// <summary>
+    /// Верхняя граница очков жизней юнита.
+    /// </summary>
+    public int MaxHP
+    {
+        get
+        {
+            return maxHP;
+        }
+    }
+    /// <summary>
     /// Текущее количество очков здоровья юнита.
     /// </summary>
     protected int currentHP;
+    public int CurrentHP
+    {
+        get
+        {
+            return currentHP;
+        }
+    }
 
 
     /// <summary>
@@ -87,9 +156,29 @@ public abstract class Unit
     /// </summary>
     protected int strength;
     /// <summary>
-    /// Бронированность юнита
+    /// Ударная сила юнита.
+    /// </summary>
+    public int Strength
+    {
+        get
+        {
+            return strength;
+        }
+    }
+    /// <summary>
+    /// Очки бронирования юнита.
     /// </summary>
     protected int armor;
+    /// <summary>
+    /// Очки бронирования юнита.
+    /// </summary>
+    public int Armor
+    {
+        get
+        {
+            return armor;
+        }
+    }
 
 
     /// <summary>
@@ -97,7 +186,9 @@ public abstract class Unit
     /// </summary>
     public static int costInProductionPoints = 10;
 
-
+    /// <summary>
+    /// Устанавливает базовые характеристики для юнита.
+    /// </summary>
     protected abstract void SetCharacteristics();
    
 
@@ -105,15 +196,14 @@ public abstract class Unit
     /// Конструктор класса юнит.
     /// </summary>
     /// <param name="coordinates">Координаты юнита на карте.</param>
-    public Unit(Vector3Int coordinates)
+    public Unit(Vector3Int startCoordinates)
     {
-        movingGrid = new List<territoryLayerTile>(); // Выделяем память под сетку перемещения
-        Name = GameData.GetRandomHumanName();   // Получаем случайное имя для юнита
-        this.coordinates = coordinates;         // Позиционируем его на карте
-        collectedExperience = 0;                // При создании у юнита нет очков опыта
+        movingGrid = new List<territoryLayerTile>();    // Выделяем память под сетку перемещения
+        Name = GameData.GetRandomHumanName();           // Получаем случайное имя для юнита
+        coordinates = startCoordinates;                 // Позиционируем его на карте
+        collectedExperience = 0;                        // При создании у юнита нет очков опыта
         currentLevel = 0;
         unitTile = GameData.initialUnitTile;
-
     }
 
     /// <summary>
@@ -121,11 +211,12 @@ public abstract class Unit
     /// </summary>
     /// <param name="coordinates">Координаты юнита на карте.</param>
     /// <param name="startAP">Начальное число очков действия юнита.</param>
-    public Unit(Vector3Int coordinates, int startAP)
+    public Unit(Vector3Int startCoordinates, int startAP)
     {
         movingGrid = new List<territoryLayerTile>();
         Name = GameData.GetRandomHumanName();
-        this.coordinates = coordinates;
+        coordinates = startCoordinates;
+        currentAP = startAP;
         collectedExperience = 0;
         currentLevel = 0;
         unitTile = GameData.initialUnitTile;
@@ -282,66 +373,6 @@ public abstract class Unit
         GameData.unitLayer.SetTile(coordinates, null);
     }
 
-    /// <returns>Координаты юнита</returns>
-    public Vector3Int GetCoordinates()
-    {
-        return coordinates;
-    }
-
-    /// <returns>Имя юнита.</returns>
-    public string GetName()
-    {
-        return Name;
-    }
-
-
-    /// <returns>Специализация юнита.</returns>
-    public string GetSpecialization()
-    {
-        return Specialization;
-    }
-
-    /// <returns>Текущее значение очков жизней.</returns>
-    public int GetCurrentHP()
-    {
-        return currentHP;
-    }
-
-    /// <returns>Максимально возможное значение очков жизней.</returns>
-    public int GetMaxHP()
-    {
-        return maxHP;
-    }
-
-    /// <returns>Текущее значение очков действия.</returns>
-    public int GetCurrentAP()
-    {
-        return currentAP;
-    }
-
-    /// <returns>Накопленные юнитом очки опыта.</returns>
-    public int GetCollectedExperience()
-    {
-        return collectedExperience;
-    }
-
-    /// <returns>Количесвто очков, необходимых для перехода на следующий уровень. </returns>
-    public int GetExperienceRequiredForNextLevel()
-    {
-        return experienceRequiredForLevel[currentLevel+1];
-    }
-
-    /// <returns>Значение наносимого юнитом урона при атаке.</returns>
-    public int GetStrength()
-    {
-        return strength;
-    }
-
-    /// <returns>Очки брони юнита.</returns>
-    public int GetArmor()
-    {
-        return armor;
-    }
 
     /// <summary>
     /// Проверяет, остались ли у юнита очки действий.

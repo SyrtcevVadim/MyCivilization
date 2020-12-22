@@ -30,7 +30,6 @@ public class UnitInfoPanelLogic : MonoBehaviour
     static Text maxPossibleHP;
 
     static Text collectedExperience;
-    static Text experienceRequiredForNextLevel;
 
     static Text remainHP;
     /// <summary>
@@ -46,7 +45,6 @@ public class UnitInfoPanelLogic : MonoBehaviour
         maxPossibleHP = GameObject.Find("MaxPossibleHP").GetComponent<Text>();
         remainHP = GameObject.Find("RemainHP").GetComponent<Text>();
         collectedExperience = GameObject.Find("CollectedExperience").GetComponent<Text>();
-        experienceRequiredForNextLevel = GameObject.Find("ExperienceRequiredForNextLevel").GetComponent<Text>();
 
         unitArmorLabel = GameObject.Find("ArmorLabel").GetComponent<Text>();
         unitInfoPanel = GameObject.Find("UnitInfoPanel");
@@ -59,15 +57,14 @@ public class UnitInfoPanelLogic : MonoBehaviour
     /// <param name="unit">Юнит, информация которого отображается в панели</param>
     public static void UpdateUnitInfo(Unit unit)
     {
-        unitNameLabel.text = string.Format("Name: {0}", unit.GetName());     
-        unitClassLabel.text = string.Format("Class: {0}", unit.GetSpecialization());        
-        unitActionPointLabel.text = unit.GetCurrentAP().ToString();               
-        unitStrengthLabel.text = unit.GetStrength().ToString();                     
-        maxPossibleHP.text = unit.GetMaxHP().ToString();
-        remainHP.text = unit.GetCurrentHP().ToString() ;
-        collectedExperience.text = unit.GetCollectedExperience().ToString();
-        experienceRequiredForNextLevel.text = unit.GetExperienceRequiredForNextLevel().ToString();
-        unitArmorLabel.text = unit.GetArmor().ToString();                           
+        unitNameLabel.text = string.Format("Name: {0}", unit.Name);     
+        unitClassLabel.text = string.Format("Class: {0}", unit.Specialization);        
+        unitActionPointLabel.text = unit.CurrentAP.ToString();               
+        unitStrengthLabel.text = unit.Strength.ToString();                     
+        maxPossibleHP.text = unit.MaxHP.ToString();
+        remainHP.text = unit.CurrentHP.ToString() ;
+        collectedExperience.text = unit.CollectedExperience.ToString();
+        unitArmorLabel.text = unit.Armor.ToString();                           
         unitInfoPanel.SetActive(true);                                             
     }
 
