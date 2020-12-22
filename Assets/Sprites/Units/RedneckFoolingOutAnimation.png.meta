@@ -29,6 +29,33 @@ TextureImporter:
   - first:
       213: 2107125525474425391
     second: RedneckwaitingAnimation_8
+  - first:
+      213: -9079788042605885785
+    second: RedneckFoolingOutAnimation_0
+  - first:
+      213: -673750005765875812
+    second: RedneckFoolingOutAnimation_1
+  - first:
+      213: -51973584563737967
+    second: RedneckFoolingOutAnimation_2
+  - first:
+      213: 3386246747245440811
+    second: RedneckFoolingOutAnimation_3
+  - first:
+      213: 1695831736071800061
+    second: RedneckFoolingOutAnimation_4
+  - first:
+      213: 7553102928053780144
+    second: RedneckFoolingOutAnimation_5
+  - first:
+      213: -8814147420530745304
+    second: RedneckFoolingOutAnimation_6
+  - first:
+      213: -7412986183185804575
+    second: RedneckFoolingOutAnimation_7
+  - first:
+      213: -2253387529710056816
+    second: RedneckFoolingOutAnimation_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -126,190 +153,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RedneckwaitingAnimation_0
+      name: RedneckFoolingOutAnimation_0
       rect:
         serializedVersion: 2
         x: 45
         y: 792
         width: 198
         height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 624e83fdb583b4960800000000000000
-      internalID: 7587219964473959462
+      spriteID: 7a603acc1ec1ef180800000000000000
+      internalID: -9079788042605885785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedneckwaitingAnimation_1
+      name: RedneckFoolingOutAnimation_1
       rect:
         serializedVersion: 2
         x: 405
         y: 792
         width: 198
         height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3e851b387000dfa0800000000000000
-      internalID: -5778117805529002433
+      spriteID: c9758ee70fb56a6f0800000000000000
+      internalID: -673750005765875812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedneckwaitingAnimation_2
+      name: RedneckFoolingOutAnimation_2
       rect:
         serializedVersion: 2
         x: 765
         y: 792
         width: 198
         height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 035769048352c7140800000000000000
-      internalID: 4718687433109435696
+      spriteID: 19aef5adc4a574ff0800000000000000
+      internalID: -51973584563737967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedneckwaitingAnimation_3
+      name: RedneckFoolingOutAnimation_3
       rect:
         serializedVersion: 2
         x: 45
         y: 432
         width: 198
         height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6ddd0e44428e5ec0800000000000000
-      internalID: -3576277824206676625
+      spriteID: b2fe26bb97d5efe20800000000000000
+      internalID: 3386246747245440811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedneckwaitingAnimation_4
+      name: RedneckFoolingOutAnimation_4
       rect:
         serializedVersion: 2
         x: 405
         y: 432
         width: 198
         height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d7905ecdc44f5fa0800000000000000
-      internalID: -5809849343564277800
+      spriteID: df4c463aafdc88710800000000000000
+      internalID: 1695831736071800061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedneckwaitingAnimation_5
+      name: RedneckFoolingOutAnimation_5
       rect:
         serializedVersion: 2
         x: 765
         y: 432
         width: 198
         height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 623d7fc41ee40c1e0800000000000000
-      internalID: -2179655490081402074
+      spriteID: 0bebb92581302d860800000000000000
+      internalID: 7553102928053780144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedneckwaitingAnimation_6
+      name: RedneckFoolingOutAnimation_6
       rect:
         serializedVersion: 2
         x: 45
         y: 72
         width: 198
         height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab59f1ca57c3969c0800000000000000
-      internalID: -3933546323434826310
+      spriteID: 820e651de9bdda580800000000000000
+      internalID: -8814147420530745304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedneckwaitingAnimation_7
+      name: RedneckFoolingOutAnimation_7
       rect:
         serializedVersion: 2
         x: 405
         y: 72
         width: 198
         height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 040369019537c0230800000000000000
-      internalID: 3606384227984486464
+      spriteID: 1e2d4529758cf1990800000000000000
+      internalID: -7412986183185804575
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedneckwaitingAnimation_8
+      name: RedneckFoolingOutAnimation_8
       rect:
         serializedVersion: 2
         x: 765
         y: 72
         width: 198
         height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2abf0b50830e3d10800000000000000
-      internalID: 2107125525474425391
+      spriteID: 09a465e0bfb5ab0e0800000000000000
+      internalID: -2253387529710056816
       vertices: []
       indices: 
       edges: []

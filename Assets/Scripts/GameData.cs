@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 public class GameData:MonoBehaviour 
 {
+
+    public static GameObject WarriorPrefab;
+    public static GameObject WorkerPrefab;
+
     /// <summary>
     /// Генератор псевдо-случайных чисел.
     /// </summary>
@@ -22,10 +26,6 @@ public class GameData:MonoBehaviour
     /// Слой городов игрового поля
     /// </summary>
     public static Tilemap cityLayer;
-    /// <summary>
-    /// Слой юнитов игрового поля
-    /// </summary>
-    public static Tilemap unitLayer;
     /// <summary>
     /// Слой территории игрового поля
     /// </summary>
@@ -101,7 +101,6 @@ public class GameData:MonoBehaviour
         // Получаем все слои игрового поля
         terrainLayer = GameObject.Find("TerrainLayer").GetComponent<Tilemap>();     // Получаем слой ландшафта
         cityLayer = GameObject.Find("CityLayer").GetComponent<Tilemap>();           // Получаем слой городов
-        unitLayer = GameObject.Find("UnitLayer").GetComponent<Tilemap>();           // Получаем слой юнитов
         territoryLayer = GameObject.Find("TerritoryLayer").GetComponent<Tilemap>(); // Получаем слой территории
         movementLayer = GameObject.Find("MovementLayer").GetComponent<Tilemap>();   // Получаем слой возможных передвижений юнита
         selectTileLayer = GameObject.Find("SelectTileLayer").GetComponent<Tilemap>();
@@ -117,5 +116,9 @@ public class GameData:MonoBehaviour
         territoryTile = Resources.Load<Tile>(@"Palettes\TerritoryLayerPalette\TerritoryTile");  // Получаем тайл территории
         tileForMovingIn = Resources.Load<Tile>(@"Palettes\MovementLayerPalette\TileForMovingIn");   // Получаем тайл для отображения клеток для возможного перемещения
         selectedTile = Resources.Load<Tile>(@"Palettes\SelectTilePalette\SelectedTile");
+
+        WarriorPrefab = Resources.Load<GameObject>(@"UnitPrefabs\Warrior");
+        WorkerPrefab = Resources.Load<GameObject>(@"UnitPrefabs\Redneck");
+
     }
 }

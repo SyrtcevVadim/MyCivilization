@@ -64,7 +64,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Barbarian.cs" />
     <Compile Include="Assets\Scripts\CameraMoving.cs" />
     <Compile Include="Assets\Scripts\City.cs" />
     <Compile Include="Assets\Scripts\CityInfoPanelLogic.cs" />
@@ -73,7 +72,6 @@
     <Compile Include="Assets\Scripts\EnemyComputer.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />
     <Compile Include="Assets\Scripts\MainMenuLogic.cs" />
-    <Compile Include="Assets\Scripts\Mammoth.cs" />
     <Compile Include="Assets\Scripts\MenuPanelLogic.cs" />
     <Compile Include="Assets\Scripts\PlayFieldLogic.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
@@ -81,10 +79,12 @@
     <Compile Include="Assets\Scripts\SettingsMenuLogic.cs" />
     <Compile Include="Assets\Scripts\StatusBarLogic.cs" />
     <Compile Include="Assets\Scripts\UILogic.cs" />
-    <Compile Include="Assets\Scripts\Unit.cs" />
+    <Compile Include="Assets\Scripts\UnitClasses\Barbarian.cs" />
+    <Compile Include="Assets\Scripts\UnitClasses\Mammoth.cs" />
+    <Compile Include="Assets\Scripts\UnitClasses\Unit.cs" />
+    <Compile Include="Assets\Scripts\UnitClasses\Warrior.cs" />
+    <Compile Include="Assets\Scripts\UnitClasses\Worker.cs" />
     <Compile Include="Assets\Scripts\UnitInfoPanelLogic.cs" />
-    <Compile Include="Assets\Scripts\Warrior.cs" />
-    <Compile Include="Assets\Scripts\Worker.cs" />
     <None Include="Assets\Resources\UnitCharacteristics\Worker.txt" />
     <None Include="Assets\Resources\UnitCharacteristics\Barbarian.txt" />
     <None Include="Assets\Resources\UnitCharacteristics\Warrior.txt" />

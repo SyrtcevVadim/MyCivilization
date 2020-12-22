@@ -35,7 +35,6 @@ public class EnemyComputer
     {
         Barbarian createdBarbarian = new Barbarian(coordinates);    // Создаем объект класса Barbarian
         listOfUnits.Add(createdBarbarian);                          // Добавляем созданный юнит в список юнитов
-        createdBarbarian.DisplayUnitOnPlayField();                  // Отображаем созданный юнит на карте
     }
 
     /// <summary>
@@ -47,7 +46,6 @@ public class EnemyComputer
     {
         Barbarian createdBarbarian = new Barbarian(coordinates, startAP);
         listOfUnits.Add(createdBarbarian);
-        createdBarbarian.DisplayUnitOnPlayField();
     }
 
     /// <summary>

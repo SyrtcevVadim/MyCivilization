@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-public class Player
+public class Player:MonoBehaviour
 {
     /// <summary>
     /// Список юнитов.
@@ -51,9 +51,15 @@ public class Player
     /// <param name="coordinates">Координаты, в которых юнит появится.</param>
     public static void CreateWorker(Vector3Int coordinates)
     {
+        Vector3 newRedneckPosition = GameData.terrainLayer.CellToWorld(coordinates);
+        GameObject newRedneck = Instantiate(GameData.WorkerPrefab, newRedneckPosition, Quaternion.identity);
+        Worker newWorker = new Worker(coordinates, newRedneck);
+        listOfUnits.Add(newWorker);
+        /*
         Worker createdUnit = new Worker(coordinates);
         listOfUnits.Add(createdUnit);
         createdUnit.DisplayUnitOnPlayField();
+        */
     }
 
     /// <summary>
@@ -63,26 +69,39 @@ public class Player
     /// <param name="startAP">Начальное число очков действия юнита</param>
     public static void CreateWorker(Vector3Int coordinates, int startAP)
     {
+        Vector3 newRedneckPosition = GameData.terrainLayer.CellToWorld(coordinates);
+        GameObject newRedneck = Instantiate(GameData.WorkerPrefab, newRedneckPosition, Quaternion.identity);
+        Worker newWorker = new Worker(coordinates,startAP, newRedneck);
+        listOfUnits.Add(newWorker);
+        /*
         // Создает объект нового юнита
         Worker createdUnit = new Worker(coordinates, startAP);
         // Добавляет новый юнит в список юнитов игрока.
         listOfUnits.Add(createdUnit);
         // Отображает юнит на игровом поле.
         createdUnit.DisplayUnitOnPlayField();
+        */
     }
 
     /// <summary>
-    /// 
+    /// Создает юнит-воин в точке с координатами coordinates.
     /// </summary>
     /// <param name="coordinates"></param>
     public static void CreateWarrior(Vector3Int coordinates)
     {
+        Vector3 newWarriorPosition = GameData.terrainLayer.CellToWorld(coordinates);
+        GameObject warriorObject = Instantiate(GameData.WarriorPrefab, newWarriorPosition, Quaternion.identity);
+        Warrior newWarrior = new Warrior(coordinates, warriorObject);
+        listOfUnits.Add(newWarrior);
+
+        /*
         // Создает объект нового юнита
         Warrior createdUnit = new Warrior(coordinates);
         // Добавляет новый юнит в список юнитов игрока.
         listOfUnits.Add(createdUnit);
         // Отображает юнит на игровом поле.
         createdUnit.DisplayUnitOnPlayField();
+        */
     }
 
     /// <summary>
@@ -92,13 +111,18 @@ public class Player
     /// <param name="startAP"></param>
     public static void CreateWarrior(Vector3Int coordinates, int startAP)
     {
+        Vector3 newWarriorPosition = GameData.territoryLayer.CellToWorld(coordinates);
+        GameObject warriorObject = Instantiate(GameData.WarriorPrefab, newWarriorPosition, Quaternion.identity);
+        Warrior newWarrior = new Warrior(coordinates, startAP, warriorObject);
+        listOfUnits.Add(newWarrior);
+        /*
         // Создает объект нового юнита
         Warrior createdUnit = new Warrior(coordinates, startAP);
         // Добавляет новый юнит в список юнитов игрока.
         listOfUnits.Add(createdUnit);
         // Отображает юнит на игровом поле.
         createdUnit.DisplayUnitOnPlayField();
-
+        */
     }
 
 
@@ -133,19 +157,6 @@ public class Player
         }
     }
     
-    /// <summary>
-    /// Изменяет тайл юнита.
-    /// </summary>
-    /// <param name="unit">Юнит, тайл которого будет изменен.</param>
-    /// <param name="newUnitTile">Новый тайл юнита.</param>
-    private static void ChangeUnitTile(Unit unit,Tile newUnitTile)
-    {
-        // Меняем тайл юнита на новый
-        unit.SetUnitTile(newUnitTile);
-        GameData.unitLayer.SetTile(unit.Coordinates, null);
-        // Отрисовываем новый тайл юнита на карте
-        GameData.unitLayer.SetTile(unit.Coordinates, unit.GetTile());
-    }
 
     /// <summary>
     /// Отмечает юнит выбранным.
@@ -169,7 +180,7 @@ public class Player
             // Обозначаем данный юнит как выбранный
             selectedUnit = unit;
 
-            ChangeUnitTile(selectedUnit, GameData.selectedUnitTile);
+            //ChangeUnitTile(selectedUnit, GameData.selectedUnitTile);
 
             // Выводим информацию о выбранном юните в панель информации о юните
             UnitInfoPanelLogic.UpdateUnitInfo(selectedUnit);
@@ -190,7 +201,7 @@ public class Player
     {
         selectedUnit.HideTilesForMoving();
         // Снимаем с юнита выделение
-        ChangeUnitTile(selectedUnit, GameData.initialUnitTile);
+        //ChangeUnitTile(selectedUnit, GameData.initialUnitTile);
 
         // Скрываем панель информации о юните
         UnitInfoPanelLogic.Close();
