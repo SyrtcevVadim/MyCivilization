@@ -12,10 +12,6 @@ public class Data
     /// </summary>
     public int goldReserve;
 
-    /// <summary>
-    /// Прирост науки в ход.
-    /// </summary>
-    public int scienceGrowthPerTurn;
 
     /// <summary>
     /// Создает объект Data.
@@ -25,7 +21,5 @@ public class Data
         // Изначально у игрока все параметры прироста и накопленных ресурсов нулевые
         goldGrowthPerTurn = 0;
         goldReserve = 0;
-        scienceGrowthPerTurn = 0;
-        
     }
 }

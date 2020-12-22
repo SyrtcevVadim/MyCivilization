@@ -56,10 +56,7 @@ public class CityInfoPanelLogic : MonoBehaviour
         populationCounterLabel = GameObject.Find("PopulationCounterLabel").GetComponent<Text>();
         productionGrowthLabel = GameObject.Find("ProductionGrowthLabel").GetComponent<Text>();
         goldGrowthLabel = GameObject.Find("GoldGrowthLabel").GetComponent<Text>();
-        scienceGrowthLabel = GameObject.Find("CityScienceGrowthLabel").GetComponent<Text>();
         totalProductionValueLabel = GameObject.Find("TotalProductionValueLabel").GetComponent<Text>();
-        //notEnoughProductionForPurchase = GameObject.Find("NotEnoughProductionForPurchase");
-        //notEnoughProductionForPurchase.SetActive(false);
         cityInfoPanel = GameObject.Find("CityInfoPanel");
 
         GameObject.Find("WorkerInfoLabel").GetComponent<Text>().text = string.Format("Worker|{0}prod", Worker.costInProductionPoints);
@@ -74,10 +71,9 @@ public class CityInfoPanelLogic : MonoBehaviour
     public static void UpdateCityInfo(City city)
     {
         cityNameLabel.text = string.Format("City name:{0}", city.Name);
-        populationCounterLabel.text = string.Format("Population:{0}", city.populationCounter);
+        populationCounterLabel.text = string.Format("Population:{0}", city.Population);
         productionGrowthLabel.text = string.Format("Production:+{0}", city.productionGrowth);
         goldGrowthLabel.text = string.Format("Gold:+{0}", city.goldGrowth);
-        scienceGrowthLabel.text = string.Format("Science:+{0}", city.scienceGrowth);
         totalProductionValueLabel.text = string.Format("Total production: {0:#.#}|Max:{1:#.#}", city.totalProductionValue, city.maxPossibleProductionValue);
         //notEnoughProductionForPurchase.SetActive(false);
         cityInfoPanel.SetActive(true);

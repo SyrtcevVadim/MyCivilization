@@ -121,19 +121,16 @@ public class Player
     public static void UpdatePlayerData()
     {
         data.goldGrowthPerTurn = 0;
-        data.scienceGrowthPerTurn = 0;
-        // Пересчитываем значения приростов золота и науки в ход
+        // Пересчитываем значения приростов золота в ход
         foreach(City city in listOfCities)
         {
             data.goldGrowthPerTurn += city.goldGrowth;
-            data.scienceGrowthPerTurn += city.scienceGrowth;
         }
         // Наращиваем деньги только после первого хода игрока
         if(GameData.currentTurnCounter > 1)
         {
             data.goldReserve += data.goldGrowthPerTurn;
         }
-        
     }
     
     /// <summary>

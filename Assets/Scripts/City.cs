@@ -17,6 +17,17 @@ public class City
     private Vector3Int coordinates;
 
     /// <summary>
+    /// Координаты города
+    /// </summary>
+    public Vector3Int Coordinates
+    {
+        get
+        {
+            return coordinates;
+        }
+    }
+
+    /// <summary>
     /// Тайл, представляющий город на карте
     /// </summary>
     public Tile cityTile;
@@ -47,15 +58,20 @@ public class City
     public int goldGrowth;
 
     /// <summary>
-    /// Прирост науки каждый ход
+    /// Текущее население поселение
     /// </summary>
-    public int scienceGrowth;
+    private int population;
 
     /// <summary>
-    /// Текущее население города
+    /// Текущее население поселения.
     /// </summary>
-    public int populationCounter;
-
+    public int Population
+    {
+        get
+        {
+            return population;
+        }
+    }
 
     /// <summary>
     ///  Конструктор класса Город
@@ -71,8 +87,7 @@ public class City
         {
             productionGrowth = 2.3;                            // Прирост продукции
             goldGrowth = 3;                                    // Прирост золота
-            scienceGrowth = 1;                                 // Прирост науки
-            populationCounter = 3;                             // Текущее население города
+            population = 3;                             // Текущее население города
             maxPossibleProductionValue = 50;                  // Объем складов для производимой продукции в городе.
             cityTile = GameData.capitalCityTile;          // Устанавливаем тайл-столицы для города столицы
         }
@@ -80,8 +95,7 @@ public class City
         {
             productionGrowth = 1;                              // Прирост продукции
             goldGrowth = 1;                                    // Прирост золота
-            scienceGrowth = 0;                                 // Прирост науки
-            populationCounter = 1;                             // Текущее население города
+            population = 1;                             // Текущее население города
             maxPossibleProductionValue = 25;                  // Объем складов для производимой продукции в городе
             cityTile = GameData.provincialCityTile;       // Устанавливаем тайл-провинции для города-провинции
         }
