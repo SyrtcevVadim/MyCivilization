@@ -31,7 +31,7 @@ public class StatusBarLogic : MonoBehaviour
     /// </summary>
     public static void UpdateStatusBar()
     {
-        goldReserveLabel.text = string.Format("Gold:{0}|{1}{2}", Player.data.goldReserve, (Player.data.goldGrowthPerTurn >= 0) ? "+" : "-", Player.data.goldGrowthPerTurn);
+        goldReserveLabel.text = string.Format("Gold:{0}|{1}{2}", Player.data.goldReserve, (Player.data.totalGoldGrowthPerTurn >= 0) ? "+" : "-", Player.data.totalGoldGrowthPerTurn);
         currentTurnLabel.text = string.Format("Turn:{0}", GameData.currentTurnCounter);
     }
     

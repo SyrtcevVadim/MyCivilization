@@ -5,11 +5,17 @@ using UnityEngine.Tilemaps;
 
 public class PlayFieldLogic : MonoBehaviour
 {
+    const int LEFT_BUTTON_CLICK = 0;
+    const int RIGHT_BUTTON_CLICK = 1;
+
     /// <summary>
     /// Координаты ячейки карты, на которую пользователь навел курсором мыши.
     /// </summary>
     private static Vector3Int selectedTileCoordinates;
 
+    /// <summary>
+    /// Список вражеских юнитов.
+    /// </summary>
     List<EnemyComputer> listOfEnemies;
 
     private void Awake()
@@ -227,7 +233,7 @@ public class PlayFieldLogic : MonoBehaviour
             StatusBarLogic.UpdateStatusBar();
             // Обрабатываем нажатия пользователем левой кнопкой мыши по городам, юнитам и ландшафту
             // С помощью левой кнопки мыши пользователь может выбрать юнита для передвижения
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(LEFT_BUTTON_CLICK))
             {
                 // Проверяем, кликнул ли пользователь ЛКМ по одному из своих городов:
                 ProcessClickOnPlayerCity(tileCoordinates);
@@ -236,7 +242,7 @@ public class PlayFieldLogic : MonoBehaviour
             }
 
             // С помощью правой кнопки мыши юнитов можно будет передвигать
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(RIGHT_BUTTON_CLICK))
             {
                 if (Player.selectedUnit != null && Player.selectedUnit.IsMovingPossible(tileCoordinates))
                 {

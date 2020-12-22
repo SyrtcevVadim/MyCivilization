@@ -5,7 +5,7 @@ public class Data
     /// <summary>
     /// Прирост золота в ход.
     /// </summary>
-    public int goldGrowthPerTurn;
+    public int totalGoldGrowthPerTurn;
 
     /// <summary>
     /// Накопленное золото на текущий момент.
@@ -19,7 +19,7 @@ public class Data
     public Data()
     {
         // Изначально у игрока все параметры прироста и накопленных ресурсов нулевые
-        goldGrowthPerTurn = 0;
+        totalGoldGrowthPerTurn = 0;
         goldReserve = 0;
     }
 }
